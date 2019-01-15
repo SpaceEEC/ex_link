@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.19.2">
+    <title>ExLink.Message — ExLink v0.1.0</title>
+    <link rel="stylesheet" href="dist/html-c1666276880c0f8e3769.css" />
+    <script src="dist/sidebar_items-2876d6449e.js"></script>
+    
+  </head>
+  <body data-type="modules">
+    <script>try { if(localStorage.getItem('night-mode')) document.body.className += ' night-mode'; } catch (e) { }</script>
+    <div class="main">
+<button class="sidebar-button sidebar-toggle">
+  <span class="icon-menu" aria-hidden="true"></span>
+  <span class="sr-only">Toggle Sidebar</span>
+</button>
+<button class="sidebar-button night-mode-toggle">
+  <span class="icon-theme" aria-hidden="true"></span>
+  <span class="sr-only">Toggle Theme</span>
+</button>
+<section class="sidebar">
+
+  <a href="https://github.com/SpaceEEC/ex_link/" class="sidebar-projectLink">
+    <div class="sidebar-projectDetails">
+      <h1 class="sidebar-projectName">
+ExLink      </h1>
+      <h2 class="sidebar-projectVersion">
+        v0.1.0
+      </h2>
+    </div>
+  </a>
+
+  <form class="sidebar-search" action="search.html">
+    <button type="submit" class="search-button">
+      <span class="icon-search" aria-hidden="true"></span>
+    </button>
+    <input name="q" type="text" id="search-list" class="search-input" placeholder="Search" aria-label="Search" autocomplete="off" />
+  </form>
+
+  <ul class="sidebar-listNav">
+    <li><a id="extras-list" href="#full-list">Pages</a></li>
+
+      <li><a id="modules-list" href="#full-list">Modules</a></li>
+
+
+  </ul>
+  <div class="gradient"></div>
+  <ul id="full-list" class="sidebar-fullList"></ul>
+</section>
+
+<section class="content">
+  <div class="content-outer">
+    <div id="content" class="content-inner">
+
+
+      <h1>
+        <small class="visible-xs">ExLink v0.1.0</small>
+ExLink.Message        
+          <a href="https://github.com/SpaceEEC/ex_link/blob/master/lib/ex_link/message.ex#L1" title="View Source" class="view-source" rel="help">
+            <span class="icon-code" aria-hidden="true"></span>
+            <span class="sr-only">View Source</span>
+          </a>
+      </h1>
+
+
+        <section id="moduledoc">
+<p>  Module used to build <a href="https://github.com/Frederikam/Lavalink/blob/master/IMPLEMENTATION.md#outgoing-messages">Outgoing Messages</a> to send to a Lavalink node.</p>
+        </section>
+
+        <section id="summary" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#summary">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+            Summary
+          </h1>
+  <div class="summary-types summary">
+    <h2>
+      <a href="#types">Types</a>
+    </h2>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:id/0">id()</a>
+  </div>
+    <div class="summary-synopsis"><p>Represents any discord snowflake</p>
+</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:message/0">message()</a>
+  </div>
+    <div class="summary-synopsis"><p>Represents a built message</p>
+</div>
+</div>
+  </div>
+  <div class="summary-functions summary">
+    <h2>
+      <a href="#functions">Functions</a>
+    </h2>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#destroy/1">destroy(guild_id)</a>
+  </div>
+    <div class="summary-synopsis"><p>Builds a &quot;destroy&quot; message used to tell the server to disconnect from the voice server</p>
+</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#equalizer/2">equalizer(bands, guild_id)</a>
+  </div>
+    <div class="summary-synopsis"><p>Builds an &quot;equalizer&quot; message used to change bands of a player</p>
+</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#pause/2">pause(paused, guild_id)</a>
+  </div>
+    <div class="summary-synopsis"><p>Builds a &quot;pause&quot; (or resume&quot;) message to pause or resume playback of a player</p>
+</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#play/3">play(track, guild_id, opts \\ %{})</a>
+  </div>
+    <div class="summary-synopsis"><p>Builds a &quot;play&quot; message used to start playing a track</p>
+</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#seek/2">seek(time_millis, guild_id)</a>
+  </div>
+    <div class="summary-synopsis"><p>Builds a &quot;seek&quot; message used to seek the position of a track</p>
+</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#stop/1">stop(guild_id)</a>
+  </div>
+    <div class="summary-synopsis"><p>Builds a &quot;stop&quot; message used to stop a player</p>
+</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#voice_update/3">voice_update(event, session_id, guild_id)</a>
+  </div>
+    <div class="summary-synopsis"><p>Builds a &quot;voice_update&quot; messages used to connect to a voice channel</p>
+</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#volume/2">volume(volume, guild_id)</a>
+  </div>
+    <div class="summary-synopsis"><p>Builds a &quot;volume&quot; message used to change the volume of a player</p>
+</div>
+</div>
+  </div>
+        </section>
+
+        <section id="types" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#types">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+Types          </h1>
+          <div class="types-list">
+<section class="detail" id="t:id/0">
+    <div class="detail-header">
+    <a href="#t:id/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">id()</span>
+      <a href="https://github.com/SpaceEEC/ex_link/blob/master/lib/ex_link/message.ex#L13" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+    
+      <span class="note">(since 0.1.0)</span>
+    
+      <div class="specs">
+          <pre>id() :: <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>() | <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>  Represents any discord snowflake.</p>
+<p>  For example <code class="inline">218348062828003328</code> or <code class="inline">&quot;218348062828003328&quot;</code>.</p>
+  </section>
+</section>
+<section class="detail" id="t:message/0">
+    <div class="detail-header">
+    <a href="#t:message/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">message()</span>
+      <a href="https://github.com/SpaceEEC/ex_link/blob/master/lib/ex_link/message.ex#L19" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+    
+      <span class="note">(since 0.1.0)</span>
+    
+      <div class="specs">
+          <pre>message() :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">map</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>  Represents a built message.</p>
+  </section>
+</section>
+          </div>
+        </section>
+        <section id="functions" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#functions">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+Functions          </h1>
+          <div class="functions-list">
+<section class="detail" id="destroy/1">
+    <div class="detail-header">
+    <a href="#destroy/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">destroy(guild_id)</span>
+      <a href="https://github.com/SpaceEEC/ex_link/blob/master/lib/ex_link/message.ex#L115" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+    
+      <span class="note">(since 0.1.0)</span>
+    
+      <div class="specs">
+          <pre>destroy(guild_id :: <a href="#t:id/0">id</a>()) :: <a href="#t:message/0">message</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>  Builds a &quot;destroy&quot; message used to tell the server to disconnect from the voice server.</p>
+  </section>
+</section>
+<section class="detail" id="equalizer/2">
+    <div class="detail-header">
+    <a href="#equalizer/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">equalizer(bands, guild_id)</span>
+      <a href="https://github.com/SpaceEEC/ex_link/blob/master/lib/ex_link/message.ex#L105" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+    
+      <span class="note">(since 0.1.0)</span>
+    
+      <div class="specs">
+          <pre>equalizer(bands :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">list</a>(), guild_id :: <a href="#t:id/0">id</a>()) :: <a href="#t:message/0">message</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>  Builds an &quot;equalizer&quot; message used to change bands of a player.</p>
+<blockquote><p>See <a href="https://github.com/Frederikam/Lavalink/blob/master/IMPLEMENTATION.md#opening-a-connection">this</a> for more info on <code class="inline">bands</code>.
+(You need to scroll down until <code class="inline">Using the player equalizer</code>)</p>
+</blockquote>
+  </section>
+</section>
+<section class="detail" id="pause/2">
+    <div class="detail-header">
+    <a href="#pause/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">pause(paused, guild_id)</span>
+      <a href="https://github.com/SpaceEEC/ex_link/blob/master/lib/ex_link/message.ex#L68" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+    
+      <span class="note">(since 0.1.0)</span>
+    
+      <div class="specs">
+          <pre>pause(paused :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>(), guild_id :: <a href="#t:id/0">id</a>()) :: <a href="#t:message/0">message</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>  Builds a &quot;pause&quot; (or resume&quot;) message to pause or resume playback of a player.</p>
+  </section>
+</section>
+<section class="detail" id="play/3">
+  
+    <span id="play/2"></span>
+  <div class="detail-header">
+    <a href="#play/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">play(track, guild_id, opts \\ %{})</span>
+      <a href="https://github.com/SpaceEEC/ex_link/blob/master/lib/ex_link/message.ex#L49" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+    
+      <span class="note">(since 0.1.0)</span>
+    
+      <div class="specs">
+          <pre>play(
+  track :: <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>(),
+  guild_id :: <a href="#t:id/0">id</a>(),
+  opts ::
+    [startTime: <a href="https://hexdocs.pm/elixir/Integer.html#t:t/0">Integer.t</a>(), endTime: <a href="https://hexdocs.pm/elixir/Integer.html#t:t/0">Integer.t</a>(), noReplace: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>()]
+    | %{
+        optional(:startTime) => <a href="https://hexdocs.pm/elixir/Integer.html#t:t/0">Integer.t</a>(),
+        optional(:endTime) => <a href="https://hexdocs.pm/elixir/Integer.html#t:t/0">Integer.t</a>(),
+        optional(:noReplace) => <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>()
+      }
+) :: <a href="#t:message/0">message</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>  Builds a &quot;play&quot; message used to start playing a track.</p>
+  </section>
+</section>
+<section class="detail" id="seek/2">
+    <div class="detail-header">
+    <a href="#seek/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">seek(time_millis, guild_id)</span>
+      <a href="https://github.com/SpaceEEC/ex_link/blob/master/lib/ex_link/message.ex#L80" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+    
+      <span class="note">(since 0.1.0)</span>
+    
+      <div class="specs">
+          <pre>seek(time_millis :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>(), guild_id :: <a href="#t:id/0">id</a>()) :: <a href="#t:message/0">message</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>  Builds a &quot;seek&quot; message used to seek the position of a track.</p>
+<blockquote><p>Time is in milliseconds.</p>
+</blockquote>
+  </section>
+</section>
+<section class="detail" id="stop/1">
+    <div class="detail-header">
+    <a href="#stop/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">stop(guild_id)</span>
+      <a href="https://github.com/SpaceEEC/ex_link/blob/master/lib/ex_link/message.ex#L61" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+    
+      <span class="note">(since 0.1.0)</span>
+    
+      <div class="specs">
+          <pre>stop(guild_id :: <a href="#t:id/0">id</a>()) :: <a href="#t:message/0">message</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>  Builds a &quot;stop&quot; message used to stop a player.</p>
+  </section>
+</section>
+<section class="detail" id="voice_update/3">
+    <div class="detail-header">
+    <a href="#voice_update/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">voice_update(event, session_id, guild_id)</span>
+      <a href="https://github.com/SpaceEEC/ex_link/blob/master/lib/ex_link/message.ex#L29" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+    
+      <span class="note">(since 0.1.0)</span>
+    
+      <div class="specs">
+          <pre>voice_update(event :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">map</a>(), session_id :: <a href="#t:id/0">id</a>(), guild_id :: <a href="#t:id/0">id</a>()) ::
+  <a href="#t:message/0">message</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>  Builds a &quot;voice_update&quot; messages used to connect to a voice channel.</p>
+<blockquote><p><code class="inline">event</code> should be a <a href="https://discordapp.com/developers/docs/topics/gateway#voice-server-update">voice_server_update</a>.
+<code class="inline">session_id</code> is obtained from a <a href="https://discordapp.com/developers/docs/resources/voice#voice-state-object">voice_state_update</a>.</p>
+</blockquote>
+  </section>
+</section>
+<section class="detail" id="volume/2">
+    <div class="detail-header">
+    <a href="#volume/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">volume(volume, guild_id)</span>
+      <a href="https://github.com/SpaceEEC/ex_link/blob/master/lib/ex_link/message.ex#L92" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+    
+      <span class="note">(since 0.1.0)</span>
+    
+      <div class="specs">
+          <pre>volume(volume :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>(), guild_id :: <a href="#t:id/0">id</a>()) :: <a href="#t:message/0">message</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>  Builds a &quot;volume&quot; message used to change the volume of a player.</p>
+<blockquote><p>Volume may range from 0 to 1000. Default is 100.</p>
+</blockquote>
+  </section>
+</section>
+          </div>
+        </section>
+          <footer class="footer">
+        <p>
+          <span class="line">
+            Built using
+            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener">ExDoc</a> (v0.19.2),
+          </span>
+          <span class="line">
+            designed by
+            <a href="https://twitter.com/dignifiedquire" target="_blank" rel="noopener" title="@dignifiedquire">Friedel Ziegelmayer</a>.
+            </span>
+        </p>
+      </footer>
+    </div>
+  </div>
+</section>
+</div>
+  <script src="dist/html-c1666276880c0f8e3769.js"></script>
+  
+  </body>
+</html>
+

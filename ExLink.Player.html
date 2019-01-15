@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.19.2">
+    <title>ExLink.Player — ExLink v0.1.0</title>
+    <link rel="stylesheet" href="dist/html-c1666276880c0f8e3769.css" />
+    <script src="dist/sidebar_items-2876d6449e.js"></script>
+    
+  </head>
+  <body data-type="modules">
+    <script>try { if(localStorage.getItem('night-mode')) document.body.className += ' night-mode'; } catch (e) { }</script>
+    <div class="main">
+<button class="sidebar-button sidebar-toggle">
+  <span class="icon-menu" aria-hidden="true"></span>
+  <span class="sr-only">Toggle Sidebar</span>
+</button>
+<button class="sidebar-button night-mode-toggle">
+  <span class="icon-theme" aria-hidden="true"></span>
+  <span class="sr-only">Toggle Theme</span>
+</button>
+<section class="sidebar">
+
+  <a href="https://github.com/SpaceEEC/ex_link/" class="sidebar-projectLink">
+    <div class="sidebar-projectDetails">
+      <h1 class="sidebar-projectName">
+ExLink      </h1>
+      <h2 class="sidebar-projectVersion">
+        v0.1.0
+      </h2>
+    </div>
+  </a>
+
+  <form class="sidebar-search" action="search.html">
+    <button type="submit" class="search-button">
+      <span class="icon-search" aria-hidden="true"></span>
+    </button>
+    <input name="q" type="text" id="search-list" class="search-input" placeholder="Search" aria-label="Search" autocomplete="off" />
+  </form>
+
+  <ul class="sidebar-listNav">
+    <li><a id="extras-list" href="#full-list">Pages</a></li>
+
+      <li><a id="modules-list" href="#full-list">Modules</a></li>
+
+
+  </ul>
+  <div class="gradient"></div>
+  <ul id="full-list" class="sidebar-fullList"></ul>
+</section>
+
+<section class="content">
+  <div class="content-outer">
+    <div id="content" class="content-inner">
+
+
+      <h1>
+        <small class="visible-xs">ExLink v0.1.0</small>
+ExLink.Player <small>behaviour</small>        
+          <a href="https://github.com/SpaceEEC/ex_link/blob/master/lib/ex_link/player/player.ex#L1" title="View Source" class="view-source" rel="help">
+            <span class="icon-code" aria-hidden="true"></span>
+            <span class="sr-only">View Source</span>
+          </a>
+      </h1>
+
+
+        <section id="moduledoc">
+<p>  Player behaviour used to keep track of running players and manage them.</p>
+<p>  Provides an alternative way using a <code class="inline">__using__</code> macro to start <a href="ExLink.html"><code class="inline">ExLink</code></a> using the current module as player:</p>
+<pre><code class="nohighlight makeup elixir"><span class="c1"># This time `use ExLink.Player` instead</span><span class="w">
+</span><span class="kd">defmodule</span><span class="w"> </span><span class="nc">MyApp.Player</span><span class="w"> </span><span class="k" data-group-id="7215951901-1">do</span><span class="w">
+  </span><span class="kn">use</span><span class="w"> </span><span class="nc">ExLink.Player</span><span class="w">
+
+  </span><span class="kd">def</span><span class="w"> </span><span class="nf">init</span><span class="p" data-group-id="7215951901-2">(</span><span class="n">client</span><span class="p">,</span><span class="w"> </span><span class="n">guild_id</span><span class="p" data-group-id="7215951901-2">)</span><span class="w"> </span><span class="k" data-group-id="7215951901-3">do</span><span class="w">
+    </span><span class="p" data-group-id="7215951901-4">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="7215951901-5">{</span><span class="n">client</span><span class="p">,</span><span class="w"> </span><span class="n">guild_id</span><span class="p" data-group-id="7215951901-5">}</span><span class="p" data-group-id="7215951901-4">}</span><span class="w">
+  </span><span class="k" data-group-id="7215951901-3">end</span><span class="w">
+
+  </span><span class="c1"># dispatches not related to a player (for example stats)</span><span class="w">
+  </span><span class="c1"># return value doesn&#39;t matter</span><span class="w">
+  </span><span class="kd">def</span><span class="w"> </span><span class="nf">handle_dispatch</span><span class="p" data-group-id="7215951901-6">(</span><span class="n">data</span><span class="p">,</span><span class="w"> </span><span class="no">nil</span><span class="p" data-group-id="7215951901-6">)</span><span class="w"> </span><span class="k" data-group-id="7215951901-7">do</span><span class="w">
+    </span><span class="nc">IO</span><span class="o">.</span><span class="n">puts</span><span class="p" data-group-id="7215951901-8">(</span><span class="s">&quot;Players: </span><span class="si" data-group-id="7215951901-9">#{</span><span class="n">data</span><span class="p" data-group-id="7215951901-10">[</span><span class="s">&quot;players&quot;</span><span class="p" data-group-id="7215951901-10">]</span><span class="si" data-group-id="7215951901-9">}</span><span class="s">&quot;</span><span class="p" data-group-id="7215951901-8">)</span><span class="w">
+    </span><span class="no">nil</span><span class="w">
+  </span><span class="k" data-group-id="7215951901-7">end</span><span class="w">
+
+  </span><span class="kd">def</span><span class="w"> </span><span class="nf">handle_dispatch</span><span class="p" data-group-id="7215951901-11">(</span><span class="n">data</span><span class="p">,</span><span class="w"> </span><span class="n">state</span><span class="p" data-group-id="7215951901-11">)</span><span class="w"> </span><span class="k" data-group-id="7215951901-12">do</span><span class="w">
+    </span><span class="nc">IO</span><span class="o">.</span><span class="n">puts</span><span class="p" data-group-id="7215951901-13">(</span><span class="s">&quot;Received a </span><span class="si" data-group-id="7215951901-14">#{</span><span class="n">data</span><span class="p" data-group-id="7215951901-15">[</span><span class="s">&quot;type&quot;</span><span class="p" data-group-id="7215951901-15">]</span><span class="si" data-group-id="7215951901-14">}</span><span class="s"> event&quot;</span><span class="p" data-group-id="7215951901-13">)</span><span class="w">
+    </span><span class="p" data-group-id="7215951901-16">{</span><span class="ss">:noreply</span><span class="p">,</span><span class="w"> </span><span class="n">state</span><span class="p" data-group-id="7215951901-16">}</span><span class="w">
+  </span><span class="k" data-group-id="7215951901-12">end</span><span class="w">
+</span><span class="k" data-group-id="7215951901-1">end</span><span class="w">
+
+</span><span class="c1"># Now fits into a supervision tree directly</span><span class="w">
+</span><span class="kd">defmodule</span><span class="w"> </span><span class="nc">MyApp.Supervisor</span><span class="w"> </span><span class="k" data-group-id="7215951901-17">do</span><span class="w">
+  </span><span class="kn">use</span><span class="w"> </span><span class="nc">Supervisor</span><span class="w">
+
+  </span><span class="kd">def</span><span class="w"> </span><span class="nf">start_link</span><span class="p" data-group-id="7215951901-18">(</span><span class="n">args</span><span class="p" data-group-id="7215951901-18">)</span><span class="w"> </span><span class="k" data-group-id="7215951901-19">do</span><span class="w">
+    </span><span class="nc">Supervisor</span><span class="o">.</span><span class="n">start_link</span><span class="p" data-group-id="7215951901-20">(</span><span class="bp">__MODULE__</span><span class="p">,</span><span class="w"> </span><span class="n">args</span><span class="p">,</span><span class="w"> </span><span class="ss">name</span><span class="p">:</span><span class="w"> </span><span class="bp">__MODULE__</span><span class="p" data-group-id="7215951901-20">)</span><span class="w">
+  </span><span class="k" data-group-id="7215951901-19">end</span><span class="w">
+
+  </span><span class="kd">def</span><span class="w"> </span><span class="nf">init</span><span class="p" data-group-id="7215951901-21">(</span><span class="c">_args</span><span class="p" data-group-id="7215951901-21">)</span><span class="w"> </span><span class="k" data-group-id="7215951901-22">do</span><span class="w">
+    </span><span class="n">children</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p" data-group-id="7215951901-23">[</span><span class="w">
+      </span><span class="p" data-group-id="7215951901-24">{</span><span class="nc">MyApp.Player</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="7215951901-25">%{</span><span class="w">
+        </span><span class="ss">url</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;localhost:8080&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="ss">authorization</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;123&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="ss">shard_count</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="ss">user_id</span><span class="p">:</span><span class="w"> </span><span class="mi">123456789123456789</span><span class="p">,</span><span class="w">
+        </span><span class="c1"># player: Not needed here,</span><span class="w">
+        </span><span class="ss">name</span><span class="p">:</span><span class="w"> </span><span class="nc">MyApp.Player</span><span class="p">,</span><span class="w">
+      </span><span class="p" data-group-id="7215951901-25">}</span><span class="p" data-group-id="7215951901-24">}</span><span class="w">
+    </span><span class="p" data-group-id="7215951901-23">]</span><span class="w">
+
+    </span><span class="nc">Supervisor</span><span class="o">.</span><span class="n">init</span><span class="p" data-group-id="7215951901-26">(</span><span class="n">children</span><span class="p">,</span><span class="w"> </span><span class="ss">strategy</span><span class="p">:</span><span class="w"> </span><span class="ss">:one_for_one</span><span class="p" data-group-id="7215951901-26">)</span><span class="p">)</span><span class="w">
+  </span><span class="k" data-group-id="7215951901-22">end</span><span class="w">
+</span><span class="k" data-group-id="7215951901-17">end</span><span class="w">
+
+</span><span class="c1"># after starting the supervisor, play something</span><span class="w">
+</span><span class="n">message</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">ExLink.Message</span><span class="o">.</span><span class="n">play</span><span class="p" data-group-id="7215951901-27">(</span><span class="n">track</span><span class="p">,</span><span class="w"> </span><span class="n">guild_id</span><span class="p" data-group-id="7215951901-27">)</span><span class="w">
+</span><span class="nc">ExLink.Connection</span><span class="o">.</span><span class="n">send</span><span class="p" data-group-id="7215951901-28">(</span><span class="nc">MyApp.Player</span><span class="p">,</span><span class="w"> </span><span class="n">message</span><span class="p" data-group-id="7215951901-28">)</span></code></pre>
+        </section>
+
+        <section id="summary" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#summary">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+            Summary
+          </h1>
+  <div class="summary-types summary">
+    <h2>
+      <a href="#types">Types</a>
+    </h2>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:common_return/0">common_return()</a>
+  </div>
+    <div class="summary-synopsis"><p>Possible return values in <a href="#c:handle_info/2"><code class="inline">handle_info/2</code></a>, <a href="#c:handle_cast/2"><code class="inline">handle_cast/2</code></a>, and <a href="#c:handle_dispatch/2"><code class="inline">handle_dispatch/2</code></a>.
+  <a href="#c:handle_call/3"><code class="inline">handle_call/3</code></a> also allows to synchronously respond via additional allowed return values</p>
+</div>
+</div>
+  </div>
+  <div class="summary-functions summary">
+    <h2>
+      <a href="#functions">Functions</a>
+    </h2>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#call/3">call(player, request, timeout \\ 5000)</a>
+  </div>
+    <div class="summary-synopsis"><p>Sends a synchrounous request to the <code class="inline">server</code> and waits for its reply.
+  See <a href="https://hexdocs.pm/elixir/GenServer.html#cast/3"><code class="inline">GenServer.cast/3</code></a></p>
+</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#cast/2">cast(player, request)</a>
+  </div>
+    <div class="summary-synopsis"><p>Sends an asynchrounous request to the <code class="inline">server</code>.
+  See <a href="https://hexdocs.pm/elixir/GenServer.html#call/3"><code class="inline">GenServer.call/3</code></a></p>
+</div>
+</div>
+  </div>
+  <div class="summary-callbacks summary">
+    <h2>
+      <a href="#callbacks">Callbacks</a>
+    </h2>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#c:handle_call/3">handle_call(request, from, state)</a>
+  </div>
+    <div class="summary-synopsis"><p>Invoked to handle synchronous <a href="#call/3"><code class="inline">call/3</code></a> messages. <a href="#call/3"><code class="inline">call/3</code></a> will block until a reply is received (unless the call times out or nodes ar disconnected).
+  See <a href="https://hexdocs.pm/elixir/GenServer.html#handle_call/3"><code class="inline">GenServer.handle_call/3</code></a></p>
+</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#c:handle_cast/2">handle_cast(request, state)</a>
+  </div>
+    <div class="summary-synopsis"><p>Invoked to handle asynchronous <a href="#cast/2"><code class="inline">cast/2</code></a> messages.
+  See <a href="https://hexdocs.pm/elixir/GenServer.html#handle_cast/2"><code class="inline">GenServer.handle_cast/2</code></a></p>
+</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#c:handle_dispatch/2">handle_dispatch(data, state)</a>
+  </div>
+    <div class="summary-synopsis"><p>Invoked to handle events from a lavalink node</p>
+</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#c:handle_info/2">handle_info(msg, state)</a>
+  </div>
+    <div class="summary-synopsis"><p>Invoked to handle all other messages.
+  See <a href="https://hexdocs.pm/elixir/GenServer.html#handle_info/2"><code class="inline">GenServer.handle_info/2</code></a></p>
+</div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#c:init/2">init(client, guild_id)</a>
+  </div>
+    <div class="summary-synopsis"><p>Invoked when the player is started.
+  See <a href="https://hexdocs.pm/elixir/GenServer.html#init/1"><code class="inline">GenServer.init/1</code></a></p>
+</div>
+</div>
+  </div>
+        </section>
+
+        <section id="types" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#types">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+Types          </h1>
+          <div class="types-list">
+<section class="detail" id="t:common_return/0">
+    <div class="detail-header">
+    <a href="#t:common_return/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">common_return()</span>
+      <a href="https://github.com/SpaceEEC/ex_link/blob/master/lib/ex_link/player/player.ex#L63" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+    
+      <span class="note">(since 0.1.0)</span>
+    
+      <div class="specs">
+          <pre>common_return() ::
+  {:noreply, new_state :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()}
+  | {:stop, reason :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(), new_state :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()}</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>  Possible return values in <a href="#c:handle_info/2"><code class="inline">handle_info/2</code></a>, <a href="#c:handle_cast/2"><code class="inline">handle_cast/2</code></a>, and <a href="#c:handle_dispatch/2"><code class="inline">handle_dispatch/2</code></a>.
+  <a href="#c:handle_call/3"><code class="inline">handle_call/3</code></a> also allows to synchronously respond via additional allowed return values.</p>
+  </section>
+</section>
+          </div>
+        </section>
+        <section id="functions" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#functions">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+Functions          </h1>
+          <div class="functions-list">
+<section class="detail" id="call/3">
+  
+    <span id="call/2"></span>
+  <div class="detail-header">
+    <a href="#call/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">call(player, request, timeout \\ 5000)</span>
+      <a href="https://github.com/SpaceEEC/ex_link/blob/master/lib/ex_link/player/player.ex#L144" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+    
+      <span class="note">(since 0.1.0)</span>
+    
+      <div class="specs">
+          <pre>call(<a href="https://hexdocs.pm/elixir/GenServer.html#t:server/0">GenServer.server</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">timeout</a>()) :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>  Sends a synchrounous request to the <code class="inline">server</code> and waits for its reply.
+  See <a href="https://hexdocs.pm/elixir/GenServer.html#cast/3"><code class="inline">GenServer.cast/3</code></a>.</p>
+  </section>
+</section>
+<section class="detail" id="cast/2">
+    <div class="detail-header">
+    <a href="#cast/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">cast(player, request)</span>
+      <a href="https://github.com/SpaceEEC/ex_link/blob/master/lib/ex_link/player/player.ex#L154" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+    
+      <span class="note">(since 0.1.0)</span>
+    
+      <div class="specs">
+          <pre>cast(<a href="https://hexdocs.pm/elixir/GenServer.html#t:server/0">GenServer.server</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()) :: :ok</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>  Sends an asynchrounous request to the <code class="inline">server</code>.
+  See <a href="https://hexdocs.pm/elixir/GenServer.html#call/3"><code class="inline">GenServer.call/3</code></a>.</p>
+  </section>
+</section>
+          </div>
+        </section>
+        <section id="callbacks" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#callbacks">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+Callbacks          </h1>
+          <div class="callbacks-list">
+<section class="detail" id="c:handle_call/3">
+    <div class="detail-header">
+    <a href="#c:handle_call/3" class="detail-link" title="Link to this callback">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this callback</span>
+    </a>
+    <h1 class="signature">handle_call(request, from, state)</span>
+      <a href="https://github.com/SpaceEEC/ex_link/blob/master/lib/ex_link/player/player.ex#L87" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+    
+      <span class="note">(optional)</span>
+
+      <span class="note">(since 0.1.0)</span>
+    
+      <div class="specs">
+          <pre>handle_call(request :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(), from :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(), state :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()) ::
+  <a href="#t:common_return/0">common_return</a>()
+  | {:reply, reply :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(), new_state :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()}
+  | {:stop, reply :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(), reason :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(), new_state :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()}</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>  Invoked to handle synchronous <a href="#call/3"><code class="inline">call/3</code></a> messages. <a href="#call/3"><code class="inline">call/3</code></a> will block until a reply is received (unless the call times out or nodes ar disconnected).
+  See <a href="https://hexdocs.pm/elixir/GenServer.html#handle_call/3"><code class="inline">GenServer.handle_call/3</code></a>.</p>
+  </section>
+</section>
+<section class="detail" id="c:handle_cast/2">
+    <div class="detail-header">
+    <a href="#c:handle_cast/2" class="detail-link" title="Link to this callback">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this callback</span>
+    </a>
+    <h1 class="signature">handle_cast(request, state)</span>
+      <a href="https://github.com/SpaceEEC/ex_link/blob/master/lib/ex_link/player/player.ex#L97" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+    
+      <span class="note">(optional)</span>
+
+      <span class="note">(since 0.1.0)</span>
+    
+      <div class="specs">
+          <pre>handle_cast(request :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(), state :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()) :: term() :: <a href="#t:common_return/0">common_return</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>  Invoked to handle asynchronous <a href="#cast/2"><code class="inline">cast/2</code></a> messages.
+  See <a href="https://hexdocs.pm/elixir/GenServer.html#handle_cast/2"><code class="inline">GenServer.handle_cast/2</code></a>.</p>
+  </section>
+</section>
+<section class="detail" id="c:handle_dispatch/2">
+    <div class="detail-header">
+    <a href="#c:handle_dispatch/2" class="detail-link" title="Link to this callback">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this callback</span>
+    </a>
+    <h1 class="signature">handle_dispatch(data, state)</span>
+      <a href="https://github.com/SpaceEEC/ex_link/blob/master/lib/ex_link/player/player.ex#L106" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+    
+      <span class="note">(since 0.1.0)</span>
+    
+      <div class="specs">
+          <pre>handle_dispatch(data :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">map</a>(), state :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()) :: <a href="#t:common_return/0">common_return</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>  Invoked to handle events from a lavalink node.</p>
+<blockquote><p>For non guild specific dispatches this function will be invoked outside of a player process, with the state <code class="inline">nil</code>.
+  Return values will be ignored.</p>
+</blockquote>
+  </section>
+</section>
+<section class="detail" id="c:handle_info/2">
+    <div class="detail-header">
+    <a href="#c:handle_info/2" class="detail-link" title="Link to this callback">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this callback</span>
+    </a>
+    <h1 class="signature">handle_info(msg, state)</span>
+      <a href="https://github.com/SpaceEEC/ex_link/blob/master/lib/ex_link/player/player.ex#L80" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+    
+      <span class="note">(optional)</span>
+
+      <span class="note">(since 0.1.0)</span>
+    
+      <div class="specs">
+          <pre>handle_info(msg :: :timeout | <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(), state :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()) :: <a href="#t:common_return/0">common_return</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>  Invoked to handle all other messages.
+  See <a href="https://hexdocs.pm/elixir/GenServer.html#handle_info/2"><code class="inline">GenServer.handle_info/2</code></a>.</p>
+  </section>
+</section>
+<section class="detail" id="c:init/2">
+    <div class="detail-header">
+    <a href="#c:init/2" class="detail-link" title="Link to this callback">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this callback</span>
+    </a>
+    <h1 class="signature">init(client, guild_id)</span>
+      <a href="https://github.com/SpaceEEC/ex_link/blob/master/lib/ex_link/player/player.ex#L72" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+    
+      <span class="note">(since 0.1.0)</span>
+    
+      <div class="specs">
+          <pre>init(client :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">pid</a>(), guild_id :: <a href="ExLink.Message.html#t:id/0">ExLink.Message.id</a>()) ::
+  {:ok, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()} | {:stop, reason :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()}</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>  Invoked when the player is started.
+  See <a href="https://hexdocs.pm/elixir/GenServer.html#init/1"><code class="inline">GenServer.init/1</code></a>.</p>
+  </section>
+</section>
+          </div>
+        </section>
+          <footer class="footer">
+        <p>
+          <span class="line">
+            Built using
+            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener">ExDoc</a> (v0.19.2),
+          </span>
+          <span class="line">
+            designed by
+            <a href="https://twitter.com/dignifiedquire" target="_blank" rel="noopener" title="@dignifiedquire">Friedel Ziegelmayer</a>.
+            </span>
+        </p>
+      </footer>
+    </div>
+  </div>
+</section>
+</div>
+  <script src="dist/html-c1666276880c0f8e3769.js"></script>
+  
+  </body>
+</html>
+
