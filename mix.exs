@@ -1,21 +1,42 @@
 defmodule ExLink.MixProject do
   use Mix.Project
 
-  def project do
+  @vsn "0.1.0"
+  @name :ex_link
+
+  def project() do
     [
-      app: :ex_link,
-      version: "0.1.0",
+      app: @name,
+      version: @vsn,
       elixir: "~> 1.7",
       start_permanent: Mix.env() == :prod,
-      deps: deps()
+      package: package(),
+      deps: deps(),
+      name: "ExLink",
+      homepage_url: "https://github.com/SpaceEEC/#{@name}/",
+      source_url: "https://github.com/SpaceEEC/#{@name}/"
     ]
   end
 
-  def application do
+  def application() do
     [extra_applications: [:logger]]
   end
 
-  defp deps do
+  def package() do
+    [
+      name: @name,
+      license: ["MIT"],
+      maintainers: ["SpaceEEC"],
+      links: %{
+        "GitHub" => "https://github.com/SpaceEEC/#{@name}/",
+        "Changelog" => "https://github.com/SpaceEEC/#{@name}/releases/tag/#{@vsn}",
+        "Documentation" => "https://hexdocs.pm/#{@name}/#{@vsn}",
+        "Development Documentation" => "https://#{@name}.randomly.space/"
+      }
+    ]
+  end
+
+  defp deps() do
     [
       {:websockex, "~> 0.4.2"},
       {:poison, ">= 0.0.0"},

@@ -1,4 +1,5 @@
 defmodule ExLink.Message do
+  @moduledoc since: "0.1.0"
   @moduledoc """
     Module used to build [Outgoing Messages](https://github.com/Frederikam/Lavalink/blob/master/IMPLEMENTATION.md#outgoing-messages) to send to a Lavalink node.
   """
@@ -8,11 +9,13 @@ defmodule ExLink.Message do
 
     For example `218348062828003328` or `"218348062828003328"`.
   """
+  @typedoc since: "0.1.0"
   @type id :: String.t() | non_neg_integer()
 
   @typedoc """
     Represents a built message.
   """
+  @typedoc since: "0.1.0"
   @type message :: map()
 
   @doc """
@@ -21,6 +24,7 @@ defmodule ExLink.Message do
   > `event` should be a [voice_server_update](https://discordapp.com/developers/docs/topics/gateway#voice-server-update).
   > `session_id` is obtained from a [voice_state_update](https://discordapp.com/developers/docs/resources/voice#voice-state-object).
   """
+  @doc since: "0.1.0"
   @spec voice_update(event :: map(), session_id :: id(), guild_id :: id()) :: message()
   def voice_update(event, session_id, guild_id) do
     %{"sessionId" => session_id, "event" => event}
@@ -30,6 +34,7 @@ defmodule ExLink.Message do
   @doc """
     Builds a "play" message used to start playing a track.
   """
+  @doc since: "0.1.0"
   @spec play(
           track :: String.t(),
           guild_id :: id(),
@@ -51,12 +56,14 @@ defmodule ExLink.Message do
   @doc """
     Builds a "stop" message used to stop a player.
   """
+  @doc since: "0.1.0"
   @spec stop(guild_id :: id()) :: message()
   def stop(guild_id), do: finalize(%{}, "stop", guild_id)
 
   @doc """
     Builds a "pause" (or resume") message to pause or resume playback of a player.
   """
+  @doc since: "0.1.0"
   @spec pause(paused :: boolean(), guild_id :: id()) :: message()
   def pause(paused, guild_id) do
     %{"pause" => paused}
@@ -68,6 +75,7 @@ defmodule ExLink.Message do
 
   > Time is in milliseconds.
   """
+  @doc since: "0.1.0"
   @spec seek(time_millis :: non_neg_integer(), guild_id :: id()) :: message()
   def seek(time_millis, guild_id) do
     %{"position" => time_millis}
@@ -79,6 +87,7 @@ defmodule ExLink.Message do
 
   > Volume may range from 0 to 1000. Default is 100.
   """
+  @doc since: "0.1.0"
   @spec volume(volume :: non_neg_integer(), guild_id :: id()) :: message()
   def volume(volume, guild_id) do
     %{"volume" => volume}
@@ -91,6 +100,7 @@ defmodule ExLink.Message do
   > See [this](https://github.com/Frederikam/Lavalink/blob/master/IMPLEMENTATION.md#opening-a-connection) for more info on `bands`.
   > (You need to scroll down until `Using the player equalizer`)
   """
+  @doc since: "0.1.0"
   @spec equalizer(bands :: list(), guild_id :: id()) :: message()
   def equalizer(bands, guild_id) do
     %{"bands" => bands}
@@ -100,6 +110,7 @@ defmodule ExLink.Message do
   @doc """
     Builds a "destroy" message used to tell the server to disconnect from the voice server.
   """
+  @doc since: "0.1.0"
   @spec destroy(guild_id :: id()) :: message()
   def destroy(guild_id) do
     %{}

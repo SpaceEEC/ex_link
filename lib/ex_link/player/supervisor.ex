@@ -41,7 +41,7 @@ defmodule ExLink.Player.Supervisor do
 
   @doc false
   def get_player(sup, guild_id) do
-    guild_id = to_string(guild_id)
+    guild_id = to_integer(guild_id)
 
     sup
     |> Supervisor.which_children()
@@ -56,12 +56,19 @@ defmodule ExLink.Player.Supervisor do
   end
 
   @doc false
+  def get_players(sup) do
+    sup
+    |> Supervisor.which_children()
+    |> Enum.into(%{}, fn {guild_id, pid, _type, _modules} -> {to_string(guild_id), pid} end)
+  end
+
+  @doc false
   @spec start_child(
           client :: term(),
           guild_id :: ExLink.Message.id()
         ) :: Supervisor.on_start()
   def start_child(client, guild_id) do
-    guild_id = to_string(guild_id)
+    guild_id = to_integer(guild_id)
     module = ExLink.get_module(client)
 
     client
@@ -74,4 +81,7 @@ defmodule ExLink.Player.Supervisor do
       )
     )
   end
+
+  defp to_integer(int) when is_integer(int), do: int
+  defp to_integer(str) when is_binary(str), do: str |> String.to_integer()
 end

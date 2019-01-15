@@ -1,4 +1,5 @@
 defmodule ExLink.Connection do
+  @moduledoc since: "0.1.0"
   @moduledoc """
     Handles the connection to a Lavalink node.
   """
@@ -12,6 +13,7 @@ defmodule ExLink.Connection do
   @doc """
     Sends a `t:ExLink.Message.message/0` or string to a Lavalink node.
   """
+  @doc since: "0.1.0"
   @spec send(client :: term(), data :: ExLink.Message.message() | String.t()) ::
           :ok | {:error, term()}
   def send(client, data)
@@ -38,6 +40,7 @@ defmodule ExLink.Connection do
     Forwards incoming [Voice Server Update](https://discordapp.com/developers/docs/topics/gateway#voice-server-update)s
     and [Voice State Update](https://discordapp.com/developers/docs/topics/gateway#voice-state-update)s to the Lavalink node.
   """
+  @doc since: "0.1.0"
   @spec forward(client :: term(), data :: map()) :: :ok
   def forward(client, %{} = data) do
     data = Map.new(data, fn {k, v} -> {to_string(k), v} end)
@@ -111,7 +114,9 @@ defmodule ExLink.Connection do
   end
 
   def handle_disconnect(reason, state) do
-    Logger.warn(fn -> "[ExLink][Connection]: Disconnected #{inspect(reason)}; Reconnecting in 5 seconds..." end)
+    Logger.warn(fn ->
+      "[ExLink][Connection]: Disconnected #{inspect(reason)}; Reconnecting in 5 seconds..."
+    end)
 
     :timer.sleep(5000)
 
@@ -152,7 +157,7 @@ defmodule ExLink.Connection do
         {:forward, %{"user_id" => _, "guild_id" => guild_id} = voice_state},
         state
       ) do
-    guild_id = to_string(guild_id)
+    guild_id = to_integer(guild_id)
 
     state
     |> Map.update!(:states, &Map.put(&1, guild_id, voice_state))
@@ -163,7 +168,7 @@ defmodule ExLink.Connection do
         {:forward, %{"token" => _, "guild_id" => guild_id} = voice_server},
         state
       ) do
-    guild_id = to_string(guild_id)
+    guild_id = to_integer(guild_id)
 
     state
     |> Map.update!(:servers, &Map.put(&1, guild_id, voice_server))
@@ -188,4 +193,7 @@ defmodule ExLink.Connection do
   end
 
   defp try_join(state, _guild_id), do: {:ok, state}
+
+  defp to_integer(int) when is_integer(int), do: int
+  defp to_integer(str) when is_binary(str), do: str |> String.to_integer()
 end
