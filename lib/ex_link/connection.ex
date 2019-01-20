@@ -71,7 +71,8 @@ defmodule ExLink.Connection do
     state = %{
       servers: %{},
       states: %{},
-      client: client
+      client: client,
+      user_id: to_integer(user_id)
     }
 
     Conn.new(
@@ -154,14 +155,18 @@ defmodule ExLink.Connection do
 
   @doc false
   def handle_cast(
-        {:forward, %{"user_id" => _, "guild_id" => guild_id} = voice_state},
-        state
+        {:forward, %{"user_id" => user_id, "guild_id" => guild_id} = voice_state},
+        %{user_id: current_user_id} = state
       ) do
     guild_id = to_integer(guild_id)
 
-    state
-    |> Map.update!(:states, &Map.put(&1, guild_id, voice_state))
-    |> try_join(guild_id)
+    if to_integer(user_id) == current_user_id do
+      state
+      |> Map.update!(:states, &Map.put(&1, guild_id, voice_state))
+      |> try_join(guild_id)
+    else
+      {:ok, state}
+    end
   end
 
   def handle_cast(
