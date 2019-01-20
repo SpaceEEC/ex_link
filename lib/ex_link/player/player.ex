@@ -206,20 +206,20 @@ defmodule ExLink.Player do
     module.handle_call(data, from, module_state)
     |> case do
       {:reply, reply, new_state} ->
-        {:reply, reply, %{state | state: new_state}}
+        {:reply, reply, %{state | module_state: new_state}}
 
       {:noreply, new_state} ->
-        {:noreply, %{state | state: new_state}}
+        {:noreply, %{state | module_state: new_state}}
 
       {:stop, reason, reply, new_state} ->
         ExLink.Connection.send(state.client, ExLink.Message.stop(state.guild_id))
 
-        {:stop, reason, reply, %{state | state: new_state}}
+        {:stop, reason, reply, %{state | module_state: new_state}}
 
       {:stop, reason, new_state} ->
         ExLink.Connection.send(state.client, ExLink.Message.stop(state.guild_id))
 
-        {:stop, reason, %{state | state: new_state}}
+        {:stop, reason, %{state | module_state: new_state}}
     end
   end
 
