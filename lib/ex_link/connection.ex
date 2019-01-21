@@ -155,9 +155,11 @@ defmodule ExLink.Connection do
 
   @doc false
   def handle_cast(
-        {:forward, %{"user_id" => user_id, "guild_id" => guild_id} = voice_state},
+        {:forward,
+         %{"user_id" => user_id, "guild_id" => guild_id, "channel_id" => channel_id} = voice_state},
         %{user_id: current_user_id} = state
-      ) do
+      )
+      when not is_nil(channel_id) do
     guild_id = to_integer(guild_id)
 
     if to_integer(user_id) == current_user_id do
