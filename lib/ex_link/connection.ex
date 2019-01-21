@@ -185,13 +185,13 @@ defmodule ExLink.Connection do
   defp try_join(%{servers: servers, states: states} = state, guild_id)
        when :erlang.is_map_key(guild_id, servers) and :erlang.is_map_key(guild_id, states) do
     voice_server = Map.get(servers, guild_id)
-    voice_state = Map.get(states, guild_id)
+    %{"session_id" => session_id} = Map.get(states, guild_id)
 
     Logger.debug(fn -> "[ExLink][Connection]: Attempting to join #{guild_id}..." end)
 
     packet =
       voice_server
-      |> Message.voice_update(Map.fetch!(voice_state, "session_id"), guild_id)
+      |> Message.voice_update(session_id, guild_id)
       |> Poison.encode!()
 
     {:reply, {:text, packet}, state}
