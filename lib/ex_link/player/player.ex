@@ -111,24 +111,26 @@ defmodule ExLink.Player do
 
   import Kernel, except: [send: 2]
 
-  defmacro __using__(opts) do
+  defmacro __using__(child_opts) do
     quote location: :keep do
       @behaviour ExLink.Player
 
       if Kernel.function_exported?(Supervisor, :child_spec, 2) do
         @doc false
-        def child_spec(state) do
-          state =
-            state
+        def child_spec({opts, gen_opts}) do
+          opts =
+            opts
             |> Map.new()
             |> Map.put(:player, __MODULE__)
 
           %{
             id: ExLink,
-            start: {ExLink, :start_link, [state]}
+            start: {ExLink, :start_link, [{opts, gen_opts}]}
           }
-          |> Supervisor.child_spec(unquote(opts))
+          |> Supervisor.child_spec(unquote(child_opts))
         end
+
+        def child_spec(opts), do: child_spec({opts, []})
 
         defoverridable child_spec: 1
       end
