@@ -36,14 +36,14 @@ defmodule ExLink.Player do
 
     def init(_args) do
       children = [
-        {MyApp.Player, %{
-          url: "localhost:8080",
-          authorization: "123",
-          shard_count: 1,
-          user_id: 123456789123456789,
-          # player: Not needed here,
-          name: MyApp.Player,
-        }}
+        {MyApp.Player,
+        {%{
+            url: "localhost:8080",
+            authorization: "123",
+            shard_count: 1,
+            user_id: 123_456_789_123_456_789,
+            # player: Not needed here
+          }, name: MyApp.Player}}
       ]
 
       Supervisor.init(children, strategy: :one_for_one))

@@ -22,14 +22,14 @@ defmodule ExLink do
 
     def init(_args) do
       children = [
-          {ExLink, %{
-          url: "localhost:8080",
-          authorization: "123",
-          shard_count: 1,
-          user_id: 123456789123456789,
-          player: MyApp.Player
-          name: MyApp.Player,
-        }}
+        {ExLink,
+        {%{
+            url: "localhost:8080",
+            authorization: "123",
+            shard_count: 1,
+            user_id: 123_456_789_123_456_789,
+            player: MyApp.Player
+          }, name: MyApp.Player}}
       ]
 
       Supervisor.init(children, strategy: :one_for_one)
@@ -53,7 +53,6 @@ defmodule ExLink do
     - `:shard_count` - Number of shards
     - `:user_id` - Id of the bot
     - `:player` - Module implementing the `ExLink.Player` behaviour.
-    - All `t:Supervisor.options/0`
 
   > Can be a `Map` or `Keyword`.
   """
@@ -64,28 +63,18 @@ defmodule ExLink do
           | {:shard_count, non_neg_integer()}
           | {:user_id, ExLink.Payload.id()}
           | {:player, module()}
-          | GenServer.options()
           | map()
 
   @doc """
     Starts an `ExLink` process linked to the current process.
-
-    Intended to be used as part of a supervision tree.
   """
   @doc since: "0.1.0"
-  @spec start_link(opts :: options()) :: Supervisor.on_start()
-  def start_link(opts) do
-    opts = Map.new(opts)
-
-    gen_opts =
-      opts
-      |> Map.drop([:url, :authorization, :shard_count, :user_id, :player])
-      |> Map.to_list()
-
-    opts = Map.take(opts, [:url, :authorization, :shard_count, :user_id, :player])
-
-    Supervisor.start_link(__MODULE__, opts, gen_opts)
+  @spec start_link(opts :: options() | {options(), GenServer.options()}) :: Supervisor.on_start()
+  def start_link({opts, gen_opts}) do
+    Supervisor.start_link(__MODULE__, Map.new(opts), gen_opts)
   end
+
+  def start_link(opts), do: start_link({opts, []})
 
   @doc false
   def init(opts) do
