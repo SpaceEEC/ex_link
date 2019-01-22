@@ -76,37 +76,37 @@ ExLink
 </ul>
 <p>A somewhat example:</p>
 <pre><code class="nohighlight makeup elixir"><span class="c1"># define a player</span><span class="w">
-</span><span class="kd">defmodule</span><span class="w"> </span><span class="nc">MyApp.Player</span><span class="w"> </span><span class="k" data-group-id="6283776944-1">do</span><span class="w">
+</span><span class="kd">defmodule</span><span class="w"> </span><span class="nc">MyApp.Player</span><span class="w"> </span><span class="k" data-group-id="6141230578-1">do</span><span class="w">
   </span><span class="na">@behaviour</span><span class="w"> </span><span class="nc">ExLink.Player</span><span class="w">
 
   </span><span class="c1"># required callbacks...</span><span class="w">
-</span><span class="k" data-group-id="6283776944-1">end</span><span class="w">
+</span><span class="k" data-group-id="6141230578-1">end</span><span class="w">
 
 </span><span class="c1"># define a supervisor</span><span class="w">
-</span><span class="kd">defmodule</span><span class="w"> </span><span class="nc">MyApp.Supervisor</span><span class="w"> </span><span class="k" data-group-id="6283776944-2">do</span><span class="w">
+</span><span class="kd">defmodule</span><span class="w"> </span><span class="nc">MyApp.Supervisor</span><span class="w"> </span><span class="k" data-group-id="6141230578-2">do</span><span class="w">
   </span><span class="kn">use</span><span class="w"> </span><span class="nc">Supervisor</span><span class="w">
 
-  </span><span class="kd">def</span><span class="w"> </span><span class="nf">start_link</span><span class="p" data-group-id="6283776944-3">(</span><span class="n">args</span><span class="p" data-group-id="6283776944-3">)</span><span class="p">,</span><span class="w"> </span><span class="ss">do</span><span class="p">:</span><span class="w"> </span><span class="nc">Supervisor</span><span class="o">.</span><span class="n">start_link</span><span class="p" data-group-id="6283776944-4">(</span><span class="bp">__MODULE__</span><span class="p">,</span><span class="w"> </span><span class="n">args</span><span class="p">,</span><span class="w"> </span><span class="ss">name</span><span class="p">:</span><span class="w"> </span><span class="bp">__MODULE__</span><span class="p" data-group-id="6283776944-4">)</span><span class="w">
+  </span><span class="kd">def</span><span class="w"> </span><span class="nf">start_link</span><span class="p" data-group-id="6141230578-3">(</span><span class="n">args</span><span class="p" data-group-id="6141230578-3">)</span><span class="p">,</span><span class="w"> </span><span class="ss">do</span><span class="p">:</span><span class="w"> </span><span class="nc">Supervisor</span><span class="o">.</span><span class="n">start_link</span><span class="p" data-group-id="6141230578-4">(</span><span class="bp">__MODULE__</span><span class="p">,</span><span class="w"> </span><span class="n">args</span><span class="p">,</span><span class="w"> </span><span class="ss">name</span><span class="p">:</span><span class="w"> </span><span class="bp">__MODULE__</span><span class="p" data-group-id="6141230578-4">)</span><span class="w">
 
-  </span><span class="kd">def</span><span class="w"> </span><span class="nf">init</span><span class="p" data-group-id="6283776944-5">(</span><span class="c">_args</span><span class="p" data-group-id="6283776944-5">)</span><span class="w"> </span><span class="k" data-group-id="6283776944-6">do</span><span class="w">
-    </span><span class="n">children</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p" data-group-id="6283776944-7">[</span><span class="w">
-        </span><span class="p" data-group-id="6283776944-8">{</span><span class="nc">ExLink</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="6283776944-9">%{</span><span class="w">
-        </span><span class="ss">url</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;localhost:8080&quot;</span><span class="p">,</span><span class="w">
-        </span><span class="ss">authorization</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;123&quot;</span><span class="p">,</span><span class="w">
-        </span><span class="ss">shard_count</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-        </span><span class="ss">user_id</span><span class="p">:</span><span class="w"> </span><span class="mi">123456789123456789</span><span class="p">,</span><span class="w">
-        </span><span class="ss">player</span><span class="p">:</span><span class="w"> </span><span class="nc">MyApp.Player</span><span class="w">
-        </span><span class="ss">name</span><span class="p">:</span><span class="w"> </span><span class="nc">MyApp.Player</span><span class="p">,</span><span class="w">
-      </span><span class="p" data-group-id="6283776944-9">}</span><span class="p" data-group-id="6283776944-8">}</span><span class="w">
-    </span><span class="p" data-group-id="6283776944-7">]</span><span class="w">
+  </span><span class="kd">def</span><span class="w"> </span><span class="nf">init</span><span class="p" data-group-id="6141230578-5">(</span><span class="c">_args</span><span class="p" data-group-id="6141230578-5">)</span><span class="w"> </span><span class="k" data-group-id="6141230578-6">do</span><span class="w">
+    </span><span class="n">children</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p" data-group-id="6141230578-7">[</span><span class="w">
+      </span><span class="p" data-group-id="6141230578-8">{</span><span class="nc">ExLink</span><span class="p">,</span><span class="w">
+      </span><span class="p" data-group-id="6141230578-9">{</span><span class="p" data-group-id="6141230578-10">%{</span><span class="w">
+          </span><span class="ss">url</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;localhost:8080&quot;</span><span class="p">,</span><span class="w">
+          </span><span class="ss">authorization</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;123&quot;</span><span class="p">,</span><span class="w">
+          </span><span class="ss">shard_count</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+          </span><span class="ss">user_id</span><span class="p">:</span><span class="w"> </span><span class="mi">123_456_789_123_456_789</span><span class="p">,</span><span class="w">
+          </span><span class="ss">player</span><span class="p">:</span><span class="w"> </span><span class="nc">MyApp.Player</span><span class="w">
+        </span><span class="p" data-group-id="6141230578-10">}</span><span class="p">,</span><span class="w"> </span><span class="ss">name</span><span class="p">:</span><span class="w"> </span><span class="nc">MyApp.Player</span><span class="p" data-group-id="6141230578-9">}</span><span class="p" data-group-id="6141230578-8">}</span><span class="w">
+    </span><span class="p" data-group-id="6141230578-7">]</span><span class="w">
 
-    </span><span class="nc">Supervisor</span><span class="o">.</span><span class="n">init</span><span class="p" data-group-id="6283776944-10">(</span><span class="n">children</span><span class="p">,</span><span class="w"> </span><span class="ss">strategy</span><span class="p">:</span><span class="w"> </span><span class="ss">:one_for_one</span><span class="p" data-group-id="6283776944-10">)</span><span class="w">
-  </span><span class="k" data-group-id="6283776944-6">end</span><span class="w">
-</span><span class="k" data-group-id="6283776944-2">end</span><span class="w">
+    </span><span class="nc">Supervisor</span><span class="o">.</span><span class="n">init</span><span class="p" data-group-id="6141230578-11">(</span><span class="n">children</span><span class="p">,</span><span class="w"> </span><span class="ss">strategy</span><span class="p">:</span><span class="w"> </span><span class="ss">:one_for_one</span><span class="p" data-group-id="6141230578-11">)</span><span class="w">
+  </span><span class="k" data-group-id="6141230578-6">end</span><span class="w">
+</span><span class="k" data-group-id="6141230578-2">end</span><span class="w">
 
 </span><span class="c1"># after starting the supervisor, play something</span><span class="w">
-</span><span class="n">message</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">ExLink.Message</span><span class="o">.</span><span class="n">play</span><span class="p" data-group-id="6283776944-11">(</span><span class="n">track</span><span class="p">,</span><span class="w"> </span><span class="n">guild_id</span><span class="p" data-group-id="6283776944-11">)</span><span class="w">
-</span><span class="nc">ExLink.Connection</span><span class="o">.</span><span class="n">send</span><span class="p" data-group-id="6283776944-12">(</span><span class="nc">MyApp.Player</span><span class="p">,</span><span class="w"> </span><span class="n">message</span><span class="p" data-group-id="6283776944-12">)</span></code></pre>
+</span><span class="n">message</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">ExLink.Message</span><span class="o">.</span><span class="n">play</span><span class="p" data-group-id="6141230578-12">(</span><span class="n">track</span><span class="p">,</span><span class="w"> </span><span class="n">guild_id</span><span class="p" data-group-id="6141230578-12">)</span><span class="w">
+</span><span class="nc">ExLink.Connection</span><span class="o">.</span><span class="n">send</span><span class="p" data-group-id="6141230578-13">(</span><span class="nc">MyApp.Player</span><span class="p">,</span><span class="w"> </span><span class="n">message</span><span class="p" data-group-id="6141230578-13">)</span></code></pre>
 <p>Alternatively <a href="ExLink.Player.html"><code class="inline">ExLink.Player</code></a> provides a <code class="inline">__using__</code> macro to use.</p>
         </section>
 
@@ -187,7 +187,7 @@ Types          </h1>
       <span class="sr-only">Link to this type</span>
     </a>
     <h1 class="signature">options()</span>
-      <a href="https://github.com/SpaceEEC/ex_link/blob/master/lib/ex_link.ex#L61" class="view-source" rel="help" title="View Source">
+      <a href="https://github.com/SpaceEEC/ex_link/blob/master/lib/ex_link.ex#L60" class="view-source" rel="help" title="View Source">
        <span class="icon-code" aria-hidden="true"></span>
        <span class="sr-only">View Source</span>
      </a>
@@ -201,7 +201,6 @@ Types          </h1>
   | {:shard_count, <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>()}
   | {:user_id, ExLink.Payload.id()}
   | {:player, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">module</a>()}
-  | <a href="https://hexdocs.pm/elixir/GenServer.html#t:options/0">GenServer.options</a>()
   | <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">map</a>()</pre>
       </div>
   </div>
@@ -217,8 +216,6 @@ Types          </h1>
 <li><code class="inline">:user_id</code> - Id of the bot
 </li>
 <li><code class="inline">:player</code> - Module implementing the <a href="ExLink.Player.html"><code class="inline">ExLink.Player</code></a> behaviour.
-</li>
-<li>All <a href="https://hexdocs.pm/elixir/Supervisor.html#t:options/0"><code class="inline">Supervisor.options/0</code></a>
 </li>
 </ul>
 <blockquote><p>Can be a <a href="https://hexdocs.pm/elixir/Map.html"><code class="inline">Map</code></a> or <a href="https://hexdocs.pm/elixir/Keyword.html"><code class="inline">Keyword</code></a>.</p>
@@ -259,7 +256,7 @@ Functions          </h1>
       <span class="sr-only">Link to this function</span>
     </a>
     <h1 class="signature">ensure_player(client, guild_id)</span>
-      <a href="https://github.com/SpaceEEC/ex_link/blob/master/lib/ex_link.ex#L130" class="view-source" rel="help" title="View Source">
+      <a href="https://github.com/SpaceEEC/ex_link/blob/master/lib/ex_link.ex#L119" class="view-source" rel="help" title="View Source">
        <span class="icon-code" aria-hidden="true"></span>
        <span class="sr-only">View Source</span>
      </a>
@@ -281,7 +278,7 @@ Functions          </h1>
       <span class="sr-only">Link to this function</span>
     </a>
     <h1 class="signature">get_player(client, guild_id)</span>
-      <a href="https://github.com/SpaceEEC/ex_link/blob/master/lib/ex_link.ex#L108" class="view-source" rel="help" title="View Source">
+      <a href="https://github.com/SpaceEEC/ex_link/blob/master/lib/ex_link.ex#L97" class="view-source" rel="help" title="View Source">
        <span class="icon-code" aria-hidden="true"></span>
        <span class="sr-only">View Source</span>
      </a>
@@ -303,7 +300,7 @@ Functions          </h1>
       <span class="sr-only">Link to this function</span>
     </a>
     <h1 class="signature">get_players(client)</span>
-      <a href="https://github.com/SpaceEEC/ex_link/blob/master/lib/ex_link.ex#L119" class="view-source" rel="help" title="View Source">
+      <a href="https://github.com/SpaceEEC/ex_link/blob/master/lib/ex_link.ex#L108" class="view-source" rel="help" title="View Source">
        <span class="icon-code" aria-hidden="true"></span>
        <span class="sr-only">View Source</span>
      </a>
@@ -333,12 +330,12 @@ Functions          </h1>
       <span class="note">(since 0.1.0)</span>
     
       <div class="specs">
-          <pre>start_link(opts :: <a href="#t:options/0">options</a>()) :: <a href="https://hexdocs.pm/elixir/Supervisor.html#t:on_start/0">Supervisor.on_start</a>()</pre>
+          <pre>start_link(opts :: <a href="#t:options/0">options</a>() | {<a href="#t:options/0">options</a>(), <a href="https://hexdocs.pm/elixir/GenServer.html#t:options/0">GenServer.options</a>()}) ::
+  <a href="https://hexdocs.pm/elixir/Supervisor.html#t:on_start/0">Supervisor.on_start</a>()</pre>
       </div>
   </div>
   <section class="docstring">
 <p>  Starts an <a href="ExLink.html#content"><code class="inline">ExLink</code></a> process linked to the current process.</p>
-<p>  Intended to be used as part of a supervision tree.</p>
   </section>
 </section>
           </div>
