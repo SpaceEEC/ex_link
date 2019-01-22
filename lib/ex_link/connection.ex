@@ -155,11 +155,34 @@ defmodule ExLink.Connection do
 
   @doc false
   def handle_cast(
-        {:forward,
-         %{"user_id" => user_id, "guild_id" => guild_id, "channel_id" => channel_id} = voice_state},
+        {:forward, %{"user_id" => user_id, "guild_id" => guild_id, "channel_id" => nil}},
         %{user_id: current_user_id} = state
-      )
-      when not is_nil(channel_id) do
+      ) do
+    guild_id = to_integer(guild_id)
+
+    if to_integer(user_id) == current_user_id do
+      Logger.debug(fn -> "[ExLink][Connection]: Disconnecting from #{guild_id}..." end)
+
+      packet =
+        guild_id
+        |> Message.destroy()
+        |> Poison.encode!()
+
+      state =
+        state
+        |> Map.update!(:states, &Map.delete(&1, guild_id))
+        |> Map.update!(:servers, &Map.delete(&1, guild_id))
+
+      {:reply, {:text, packet}, state}
+    else
+      {:ok, state}
+    end
+  end
+
+  def handle_cast(
+        {:forward, %{"user_id" => user_id, "guild_id" => guild_id} = voice_state},
+        %{user_id: current_user_id} = state
+      ) do
     guild_id = to_integer(guild_id)
 
     if to_integer(user_id) == current_user_id do
