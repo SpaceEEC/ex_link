@@ -3,7 +3,7 @@ defmodule ExLink.Player do
   @moduledoc ~S"""
     Player behaviour used to keep track of running players and manage them.
 
-    Provides an alternative way using a `__using__` macro to start `ExLink` using the current module as player:
+    Provides a `__using__` macro to start the current module as a `ExLink.Player` directly under a supervisor.
   ```elixir
   # This time `use ExLink.Player` instead
   defmodule MyApp.Player do

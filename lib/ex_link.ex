@@ -1,7 +1,7 @@
 defmodule ExLink do
   @moduledoc """
     Handles WebSocket connections to a Lavalink node, providing:
-    - `ExLink.Player`s to keep track of what and where is player
+    - `ExLink.Player`s to keep track of Lavalink players and control them
     - `ExLink.Message`s to send via `ExLink.Connection`(s)
 
 
@@ -41,7 +41,7 @@ defmodule ExLink do
   ExLink.Connection.send(MyApp.Player, message)
   ```
 
-  Alternatively `ExLink.Player` provides a `__using__` macro to use.
+  Alternatively `ExLink.Player` provides a `__using__` macro to directly start the module under a supervisor.
   """
   use Supervisor
 

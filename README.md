@@ -1,6 +1,6 @@
 # ExLink
 
-**TODO: Add description**
+A [Lavalink](https://github.com/Frederikam/Lavalink/) client for elixir.
 
 ## Installation
 
