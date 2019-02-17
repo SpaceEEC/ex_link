@@ -58,11 +58,13 @@ defmodule ExLink do
   """
   @typedoc since: "0.1.0"
   @type options ::
-          {:url, String.t()}
-          | {:authorization, String.t()}
-          | {:shard_count, non_neg_integer()}
-          | {:user_id, ExLink.Payload.id()}
-          | {:player, module()}
+          [
+            {:url, String.t()}
+            | {:authorization, String.t()}
+            | {:shard_count, non_neg_integer()}
+            | {:user_id, ExLink.Payload.id()}
+            | {:player, module()}
+          ]
           | map()
 
   @doc """
