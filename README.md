@@ -2,20 +2,22 @@
 
 A [Lavalink](https://github.com/Frederikam/Lavalink/) client for elixir.
 
+## Useful links
+- [Documentation](https://ex_link.randomly.space/api-reference.html)
+- [Github](https://github.com/SpaceEEC/ex_link/)
+- [Changelog](https://github.com/SpaceEEC/ex_link/releases/tag/0.1.0/)
+
 ## Installation
 
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `ex_link` to your list of dependencies in `mix.exs`:
+The package can be installed by adding `ex_link` to your list of dependencies in `mix.exs`:
 
 ```elixir
 def deps do
   [
-    {:ex_link, "~> 0.1.0"}
+    {:ex_link, git: "https://github.com/spaceeec/ex_link.git", tag: "0.1.0"}
   ]
 end
 ```
+## Usage
 
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at [https://hexdocs.pm/ex_link](https://hexdocs.pm/ex_link).
-
+Check out the `@moduledoc` for `ExLink` and `ExLink.Player` for a small example.
