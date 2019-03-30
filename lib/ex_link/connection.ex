@@ -109,7 +109,7 @@ defmodule ExLink.Connection do
 
   @doc false
   def handle_disconnect(%{reason: {_, code, reason}}, state) do
-    Logger.warn(fn -> "[ExLink][Connection]: Disconnected: #{code} - #{reason}" end)
+    Logger.warn(fn -> "[ExLink][Connection]: Disconnected: #{code} - #{inspect(reason)}" end)
 
     {:reconnect, state}
   end
