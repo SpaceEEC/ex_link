@@ -20,4 +20,4 @@ end
 ```
 ## Usage
 
-Check out the `@moduledoc` for `ExLink` and `ExLink.Player` for a small example.
+Check out the `@moduledoc` for [`ExLink`](/lib/ex_link.ex) and [`ExLink.Player`](/lib/ex_link/player/player.ex) for a small example.
