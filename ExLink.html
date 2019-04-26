@@ -76,37 +76,37 @@ ExLink
 </ul>
 <p>A somewhat example:</p>
 <pre><code class="nohighlight makeup elixir"><span class="c1"># define a player</span><span class="w">
-</span><span class="kd">defmodule</span><span class="w"> </span><span class="nc">MyApp.Player</span><span class="w"> </span><span class="k" data-group-id="4161687489-1">do</span><span class="w">
+</span><span class="kd">defmodule</span><span class="w"> </span><span class="nc">MyApp.Player</span><span class="w"> </span><span class="k" data-group-id="9244737491-1">do</span><span class="w">
   </span><span class="na">@behaviour</span><span class="w"> </span><span class="nc">ExLink.Player</span><span class="w">
 
   </span><span class="c1"># required callbacks...</span><span class="w">
-</span><span class="k" data-group-id="4161687489-1">end</span><span class="w">
+</span><span class="k" data-group-id="9244737491-1">end</span><span class="w">
 
 </span><span class="c1"># define a supervisor</span><span class="w">
-</span><span class="kd">defmodule</span><span class="w"> </span><span class="nc">MyApp.Supervisor</span><span class="w"> </span><span class="k" data-group-id="4161687489-2">do</span><span class="w">
+</span><span class="kd">defmodule</span><span class="w"> </span><span class="nc">MyApp.Supervisor</span><span class="w"> </span><span class="k" data-group-id="9244737491-2">do</span><span class="w">
   </span><span class="kn">use</span><span class="w"> </span><span class="nc">Supervisor</span><span class="w">
 
-  </span><span class="kd">def</span><span class="w"> </span><span class="nf">start_link</span><span class="p" data-group-id="4161687489-3">(</span><span class="n">args</span><span class="p" data-group-id="4161687489-3">)</span><span class="p">,</span><span class="w"> </span><span class="ss">do</span><span class="p">:</span><span class="w"> </span><span class="nc">Supervisor</span><span class="o">.</span><span class="n">start_link</span><span class="p" data-group-id="4161687489-4">(</span><span class="bp">__MODULE__</span><span class="p">,</span><span class="w"> </span><span class="n">args</span><span class="p">,</span><span class="w"> </span><span class="ss">name</span><span class="p">:</span><span class="w"> </span><span class="bp">__MODULE__</span><span class="p" data-group-id="4161687489-4">)</span><span class="w">
+  </span><span class="kd">def</span><span class="w"> </span><span class="nf">start_link</span><span class="p" data-group-id="9244737491-3">(</span><span class="n">args</span><span class="p" data-group-id="9244737491-3">)</span><span class="p">,</span><span class="w"> </span><span class="ss">do</span><span class="p">:</span><span class="w"> </span><span class="nc">Supervisor</span><span class="o">.</span><span class="n">start_link</span><span class="p" data-group-id="9244737491-4">(</span><span class="bp">__MODULE__</span><span class="p">,</span><span class="w"> </span><span class="n">args</span><span class="p">,</span><span class="w"> </span><span class="ss">name</span><span class="p">:</span><span class="w"> </span><span class="bp">__MODULE__</span><span class="p" data-group-id="9244737491-4">)</span><span class="w">
 
-  </span><span class="kd">def</span><span class="w"> </span><span class="nf">init</span><span class="p" data-group-id="4161687489-5">(</span><span class="c">_args</span><span class="p" data-group-id="4161687489-5">)</span><span class="w"> </span><span class="k" data-group-id="4161687489-6">do</span><span class="w">
-    </span><span class="n">children</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p" data-group-id="4161687489-7">[</span><span class="w">
-      </span><span class="p" data-group-id="4161687489-8">{</span><span class="nc">ExLink</span><span class="p">,</span><span class="w">
-      </span><span class="p" data-group-id="4161687489-9">{</span><span class="p" data-group-id="4161687489-10">%{</span><span class="w">
+  </span><span class="kd">def</span><span class="w"> </span><span class="nf">init</span><span class="p" data-group-id="9244737491-5">(</span><span class="c">_args</span><span class="p" data-group-id="9244737491-5">)</span><span class="w"> </span><span class="k" data-group-id="9244737491-6">do</span><span class="w">
+    </span><span class="n">children</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p" data-group-id="9244737491-7">[</span><span class="w">
+      </span><span class="p" data-group-id="9244737491-8">{</span><span class="nc">ExLink</span><span class="p">,</span><span class="w">
+      </span><span class="p" data-group-id="9244737491-9">{</span><span class="p" data-group-id="9244737491-10">%{</span><span class="w">
           </span><span class="ss">url</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;localhost:8080&quot;</span><span class="p">,</span><span class="w">
           </span><span class="ss">authorization</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;123&quot;</span><span class="p">,</span><span class="w">
           </span><span class="ss">shard_count</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
           </span><span class="ss">user_id</span><span class="p">:</span><span class="w"> </span><span class="mi">123_456_789_123_456_789</span><span class="p">,</span><span class="w">
           </span><span class="ss">player</span><span class="p">:</span><span class="w"> </span><span class="nc">MyApp.Player</span><span class="w">
-        </span><span class="p" data-group-id="4161687489-10">}</span><span class="p">,</span><span class="w"> </span><span class="ss">name</span><span class="p">:</span><span class="w"> </span><span class="nc">MyApp.Player</span><span class="p" data-group-id="4161687489-9">}</span><span class="p" data-group-id="4161687489-8">}</span><span class="w">
-    </span><span class="p" data-group-id="4161687489-7">]</span><span class="w">
+        </span><span class="p" data-group-id="9244737491-10">}</span><span class="p">,</span><span class="w"> </span><span class="ss">name</span><span class="p">:</span><span class="w"> </span><span class="nc">MyApp.Player</span><span class="p" data-group-id="9244737491-9">}</span><span class="p" data-group-id="9244737491-8">}</span><span class="w">
+    </span><span class="p" data-group-id="9244737491-7">]</span><span class="w">
 
-    </span><span class="nc">Supervisor</span><span class="o">.</span><span class="n">init</span><span class="p" data-group-id="4161687489-11">(</span><span class="n">children</span><span class="p">,</span><span class="w"> </span><span class="ss">strategy</span><span class="p">:</span><span class="w"> </span><span class="ss">:one_for_one</span><span class="p" data-group-id="4161687489-11">)</span><span class="w">
-  </span><span class="k" data-group-id="4161687489-6">end</span><span class="w">
-</span><span class="k" data-group-id="4161687489-2">end</span><span class="w">
+    </span><span class="nc">Supervisor</span><span class="o">.</span><span class="n">init</span><span class="p" data-group-id="9244737491-11">(</span><span class="n">children</span><span class="p">,</span><span class="w"> </span><span class="ss">strategy</span><span class="p">:</span><span class="w"> </span><span class="ss">:one_for_one</span><span class="p" data-group-id="9244737491-11">)</span><span class="w">
+  </span><span class="k" data-group-id="9244737491-6">end</span><span class="w">
+</span><span class="k" data-group-id="9244737491-2">end</span><span class="w">
 
 </span><span class="c1"># after starting the supervisor, play something</span><span class="w">
-</span><span class="n">message</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">ExLink.Message</span><span class="o">.</span><span class="n">play</span><span class="p" data-group-id="4161687489-12">(</span><span class="n">track</span><span class="p">,</span><span class="w"> </span><span class="n">guild_id</span><span class="p" data-group-id="4161687489-12">)</span><span class="w">
-</span><span class="nc">ExLink.Connection</span><span class="o">.</span><span class="n">send</span><span class="p" data-group-id="4161687489-13">(</span><span class="nc">MyApp.Player</span><span class="p">,</span><span class="w"> </span><span class="n">message</span><span class="p" data-group-id="4161687489-13">)</span></code></pre>
+</span><span class="n">message</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">ExLink.Message</span><span class="o">.</span><span class="n">play</span><span class="p" data-group-id="9244737491-12">(</span><span class="n">track</span><span class="p">,</span><span class="w"> </span><span class="n">guild_id</span><span class="p" data-group-id="9244737491-12">)</span><span class="w">
+</span><span class="nc">ExLink.Connection</span><span class="o">.</span><span class="n">send</span><span class="p" data-group-id="9244737491-13">(</span><span class="nc">MyApp.Player</span><span class="p">,</span><span class="w"> </span><span class="n">message</span><span class="p" data-group-id="9244737491-13">)</span></code></pre>
 <p>Alternatively <a href="ExLink.Player.html"><code class="inline">ExLink.Player</code></a> provides a <code class="inline">__using__</code> macro to directly start the module under a supervisor.</p>
         </section>
 
