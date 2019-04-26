@@ -61,7 +61,7 @@ defmodule ExLink.Message do
   def stop(guild_id), do: finalize(%{}, "stop", guild_id)
 
   @doc """
-    Builds a "pause" (or resume") message to pause or resume playback of a player.
+    Builds a "pause" (or "resume") message to pause or resume playback of a player.
   """
   @doc since: "0.1.0"
   @spec pause(paused :: boolean(), guild_id :: id()) :: message()
