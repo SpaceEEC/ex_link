@@ -4,6 +4,15 @@ defmodule ExLink.Connection do
     Handles the connection to a Lavalink node.
   """
 
+  @keys [
+    :servers,
+    :states,
+    :client,
+    :user_id
+  ]
+  @enforce_keys @keys
+  defstruct @keys
+
   use WebSockex
 
   import Kernel, except: [send: 2]
@@ -68,7 +77,7 @@ defmodule ExLink.Connection do
       }) do
     Logger.info(fn -> "Starting..." end)
 
-    state = %{
+    state = %__MODULE__{
       servers: %{},
       states: %{},
       client: client,
@@ -132,13 +141,12 @@ defmodule ExLink.Connection do
   end
 
   @doc false
-  def handle_frame({:text, frame}, %{client: client} = state) do
+  def handle_frame({:text, frame}, %__MODULE__{client: client} = state) do
     frame
     |> Poison.decode()
     |> case do
       {:ok, data} ->
-        client
-        |> ExLink.Player.Supervisor.dispatch(data)
+        ExLink.Player.Supervisor.dispatch(client, data)
 
       _ ->
         nil
@@ -152,7 +160,7 @@ defmodule ExLink.Connection do
   @doc false
   def handle_cast(
         {:forward, %{"user_id" => user_id, "guild_id" => guild_id, "channel_id" => nil}},
-        %{user_id: current_user_id} = state
+        %__MODULE__{user_id: current_user_id, states: states, servers: servers} = state
       ) do
     guild_id = to_integer(guild_id)
 
@@ -164,10 +172,11 @@ defmodule ExLink.Connection do
         |> Message.destroy()
         |> Poison.encode!()
 
-      state =
+      state = %__MODULE__{
         state
-        |> Map.update!(:states, &Map.delete(&1, guild_id))
-        |> Map.update!(:servers, &Map.delete(&1, guild_id))
+        | states: Map.delete(states, guild_id),
+          servers: Map.delete(servers, guild_id)
+      }
 
       {:reply, {:text, packet}, state}
     else
@@ -177,13 +186,12 @@ defmodule ExLink.Connection do
 
   def handle_cast(
         {:forward, %{"user_id" => user_id, "guild_id" => guild_id} = voice_state},
-        %{user_id: current_user_id} = state
+        %__MODULE__{user_id: current_user_id, states: states} = state
       ) do
     guild_id = to_integer(guild_id)
 
     if to_integer(user_id) == current_user_id do
-      state
-      |> Map.update!(:states, &Map.put(&1, guild_id, voice_state))
+      %__MODULE__{state | states: Map.put(states, guild_id, voice_state)}
       |> try_join(guild_id)
     else
       {:ok, state}
@@ -192,23 +200,22 @@ defmodule ExLink.Connection do
 
   def handle_cast(
         {:forward, %{"token" => _, "guild_id" => guild_id} = voice_server},
-        state
+        %__MODULE__{servers: servers} = state
       ) do
     guild_id = to_integer(guild_id)
 
-    state
-    |> Map.update!(:servers, &Map.put(&1, guild_id, voice_server))
+    %__MODULE__{state | servers: Map.put(servers, guild_id, voice_server)}
     |> try_join(guild_id)
   end
 
   def handle_cast(_other, state), do: {:ok, state}
 
-  defp try_join(%{servers: servers, states: states} = state, guild_id)
+  defp try_join(%__MODULE__{servers: servers, states: states} = state, guild_id)
        when :erlang.is_map_key(guild_id, servers) and :erlang.is_map_key(guild_id, states) do
-    voice_server = Map.get(servers, guild_id)
-    %{"session_id" => session_id, "channel_id" => channel_id} = Map.get(states, guild_id)
+    %{^guild_id => voice_server} = servers
+    %{^guild_id => %{"session_id" => session_id, "channel_id" => channel_id}} = states
 
-    Logger.debug(fn -> "Attempting to join  channel #{channel_id} in guild #{guild_id}..." end)
+    Logger.debug(fn -> "Attempting to join channel #{channel_id} in guild #{guild_id}..." end)
 
     packet =
       voice_server
