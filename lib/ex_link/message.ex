@@ -39,16 +39,23 @@ defmodule ExLink.Message do
           track :: String.t(),
           guild_id :: id(),
           opts ::
-            [{:startTime, Integer.t()} | {:endTime, Integer.t()} | {:noReplace, boolean()}]
+            [{:start_time, Integer.t()} | {:end_time, Integer.t()} | {:no_replace, boolean()}]
             | %{
-                optional(:startTime) => Integer.t(),
-                optional(:endTime) => Integer.t(),
-                optional(:noReplace) => boolean()
+                optional(:start_time) => Integer.t(),
+                optional(:end_time) => Integer.t(),
+                optional(:no_replace) => boolean()
               }
         ) :: message()
   def play(track, guild_id, opts \\ %{}) do
     opts
-    |> Map.new()
+    |> Map.new(fn {k, v} ->
+      k =
+        k
+        |> to_string()
+        |> String.replace(~r{(_.)}, fn "_" <> k -> String.upcase(k) end)
+
+      {k, v}
+    end)
     |> Map.put("track", track)
     |> finalize("play", guild_id)
   end
