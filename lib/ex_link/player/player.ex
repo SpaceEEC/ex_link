@@ -38,7 +38,7 @@ defmodule ExLink.Player do
       children = [
         {MyApp.Player,
         {%{
-            url: "localhost:8080",
+            url: "ws://localhost:8080",
             authorization: "123",
             shard_count: 1,
             user_id: 123_456_789_123_456_789,

@@ -76,7 +76,7 @@ defmodule ExLink.Connection do
     }
 
     Conn.new(
-      "ws://#{url}",
+      url,
       extra_headers: [
         {"Authorization", authorization},
         {"Num-Shards", shard_count},
