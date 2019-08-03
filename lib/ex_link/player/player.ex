@@ -94,7 +94,7 @@ defmodule ExLink.Player do
     See `GenServer.handle_cast/2`.
   """
   @doc since: "0.1.0"
-  @callback handle_cast(request :: term(), state :: term()) :: term() :: common_return()
+  @callback handle_cast(request :: term(), state :: term()) :: common_return()
 
   @doc """
     Invoked to handle events from a lavalink node.
