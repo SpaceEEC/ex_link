@@ -66,7 +66,7 @@ defmodule ExLink.Connection do
         user_id: user_id,
         client: client
       }) do
-    Logger.info(fn -> "[ExLink][Connection]: Starting" end)
+    Logger.info(fn -> "Starting..." end)
 
     state = %{
       servers: %{},
@@ -102,22 +102,20 @@ defmodule ExLink.Connection do
 
   @doc false
   def handle_connect(_conn, state) do
-    Logger.info(fn -> "[ExLink][Connection]: Connected" end)
+    Logger.info(fn -> "Connected!" end)
 
     {:ok, state}
   end
 
   @doc false
   def handle_disconnect(%{reason: {_, code, reason}}, state) do
-    Logger.warn(fn -> "[ExLink][Connection]: Disconnected: #{code} - #{inspect(reason)}" end)
+    Logger.warn(fn -> "Disconnected: #{code} - #{inspect(reason)}; Reconnecting..." end)
 
     {:reconnect, state}
   end
 
   def handle_disconnect(reason, state) do
-    Logger.warn(fn ->
-      "[ExLink][Connection]: Disconnected #{inspect(reason)}; Reconnecting in 5 seconds..."
-    end)
+    Logger.warn(fn -> "Disconnected #{inspect(reason)}; Reconnecting in 5 seconds..." end)
 
     :timer.sleep(5000)
 
@@ -126,13 +124,11 @@ defmodule ExLink.Connection do
 
   @doc false
   def terinate({error, stacktrace}, _state) do
-    Logger.error(fn ->
-      "[ExLink][Connection]: Terminating: #{Exception.format(:error, error, stacktrace)}"
-    end)
+    Logger.error(fn -> "Terminating: #{Exception.format(:error, error, stacktrace)}" end)
   end
 
   def terminate(reason, _state) do
-    Logger.error(fn -> "[ExLink][Connection]: Terminating: #{inspect(reason)}" end)
+    Logger.error(fn -> "Terminating: #{inspect(reason)}" end)
   end
 
   @doc false
@@ -161,7 +157,7 @@ defmodule ExLink.Connection do
     guild_id = to_integer(guild_id)
 
     if to_integer(user_id) == current_user_id do
-      Logger.debug(fn -> "[ExLink][Connection]: Disconnecting from #{guild_id}..." end)
+      Logger.debug(fn -> "Disconnecting from guild #{guild_id}..." end)
 
       packet =
         guild_id
@@ -210,9 +206,9 @@ defmodule ExLink.Connection do
   defp try_join(%{servers: servers, states: states} = state, guild_id)
        when :erlang.is_map_key(guild_id, servers) and :erlang.is_map_key(guild_id, states) do
     voice_server = Map.get(servers, guild_id)
-    %{"session_id" => session_id} = Map.get(states, guild_id)
+    %{"session_id" => session_id, "channel_id" => channel_id} = Map.get(states, guild_id)
 
-    Logger.debug(fn -> "[ExLink][Connection]: Attempting to join #{guild_id}..." end)
+    Logger.debug(fn -> "Attempting to join  channel #{channel_id} in guild #{guild_id}..." end)
 
     packet =
       voice_server
