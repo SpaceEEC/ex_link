@@ -4,41 +4,50 @@
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="generator" content="ExDoc v0.19.2">
+    <meta name="generator" content="ExDoc v0.21.1">
+    <meta name="project" content="ExLink v0.1.0">
     <title>ExLink — ExLink v0.1.0</title>
-    <link rel="stylesheet" href="dist/html-c1666276880c0f8e3769.css" />
+    <link rel="stylesheet" href="dist/html-9914b37a220eb2c313b6.css" />
     <script src="dist/sidebar_items-2876d6449e.js"></script>
+      <script src="docs_config.js"></script>
+    <script async src="dist/html-9914b37a220eb2c313b6.js"></script>
     
   </head>
   <body data-type="modules">
-    <script>try { if(localStorage.getItem('night-mode')) document.body.className += ' night-mode'; } catch (e) { }</script>
+    <script>try { if(localStorage.getItem('night-mode') === 'true') document.body.className += ' night-mode'; } catch (e) { }</script>
     <div class="main">
+
 <button class="sidebar-button sidebar-toggle">
-  <span class="icon-menu" aria-hidden="true"></span>
-  <span class="sr-only">Toggle Sidebar</span>
+  <span class="icon-menu" title="Collapse/expand sidebar"></span>
 </button>
-<button class="sidebar-button night-mode-toggle">
-  <span class="icon-theme" aria-hidden="true"></span>
-  <span class="sr-only">Toggle Theme</span>
-</button>
+
 <section class="sidebar">
-
-  <a href="https://github.com/SpaceEEC/ex_link/" class="sidebar-projectLink">
-    <div class="sidebar-projectDetails">
-      <h1 class="sidebar-projectName">
-ExLink      </h1>
-      <h2 class="sidebar-projectVersion">
-        v0.1.0
-      </h2>
-    </div>
-  </a>
-
   <form class="sidebar-search" action="search.html">
     <button type="submit" class="search-button">
       <span class="icon-search" aria-hidden="true"></span>
     </button>
-    <input name="q" type="text" id="search-list" class="search-input" placeholder="Search" aria-label="Search" autocomplete="off" />
+    <button type="button" tabindex="-1" class="search-close-button">
+      <span class="icon-cross" title="Cancel search"></span>
+    </button>
+    <label class="search-label">
+      <input name="q" type="text" id="search-list" class="search-input" placeholder="Search..." aria-label="Search" autocomplete="off" />
+    </label>
   </form>
+
+  <div class="autocomplete">
+    <div class="autocomplete-results">
+    </div>
+  </div>
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectDetails">
+      <a href="https://github.com/SpaceEEC/ex_link/" class="sidebar-projectName">
+ExLink      </a>
+      <h2 class="sidebar-projectVersion">
+        v0.1.0
+      </h2>
+    </div>
+  </div>
 
   <ul class="sidebar-listNav">
     <li><a id="extras-list" href="#full-list">Pages</a></li>
@@ -57,7 +66,7 @@ ExLink      </h1>
 
 
       <h1>
-        <small class="visible-xs">ExLink v0.1.0</small>
+        <small class="app-vsn">ExLink v0.1.0</small>
 ExLink        
           <a href="https://github.com/SpaceEEC/ex_link/blob/master/lib/ex_link.ex#L1" title="View Source" class="view-source" rel="help">
             <span class="icon-code" aria-hidden="true"></span>
@@ -76,37 +85,37 @@ ExLink
 </ul>
 <p>A somewhat example:</p>
 <pre><code class="nohighlight makeup elixir"><span class="c1"># define a player</span><span class="w">
-</span><span class="kd">defmodule</span><span class="w"> </span><span class="nc">MyApp.Player</span><span class="w"> </span><span class="k" data-group-id="2781605197-1">do</span><span class="w">
+</span><span class="kd">defmodule</span><span class="w"> </span><span class="nc">MyApp.Player</span><span class="w"> </span><span class="k" data-group-id="6282092152-1">do</span><span class="w">
   </span><span class="na">@behaviour</span><span class="w"> </span><span class="nc">ExLink.Player</span><span class="w">
 
   </span><span class="c1"># required callbacks...</span><span class="w">
-</span><span class="k" data-group-id="2781605197-1">end</span><span class="w">
+</span><span class="k" data-group-id="6282092152-1">end</span><span class="w">
 
 </span><span class="c1"># define a supervisor</span><span class="w">
-</span><span class="kd">defmodule</span><span class="w"> </span><span class="nc">MyApp.Supervisor</span><span class="w"> </span><span class="k" data-group-id="2781605197-2">do</span><span class="w">
+</span><span class="kd">defmodule</span><span class="w"> </span><span class="nc">MyApp.Supervisor</span><span class="w"> </span><span class="k" data-group-id="6282092152-2">do</span><span class="w">
   </span><span class="kn">use</span><span class="w"> </span><span class="nc">Supervisor</span><span class="w">
 
-  </span><span class="kd">def</span><span class="w"> </span><span class="nf">start_link</span><span class="p" data-group-id="2781605197-3">(</span><span class="n">args</span><span class="p" data-group-id="2781605197-3">)</span><span class="p">,</span><span class="w"> </span><span class="ss">do</span><span class="p">:</span><span class="w"> </span><span class="nc">Supervisor</span><span class="o">.</span><span class="n">start_link</span><span class="p" data-group-id="2781605197-4">(</span><span class="bp">__MODULE__</span><span class="p">,</span><span class="w"> </span><span class="n">args</span><span class="p">,</span><span class="w"> </span><span class="ss">name</span><span class="p">:</span><span class="w"> </span><span class="bp">__MODULE__</span><span class="p" data-group-id="2781605197-4">)</span><span class="w">
+  </span><span class="kd">def</span><span class="w"> </span><span class="nf">start_link</span><span class="p" data-group-id="6282092152-3">(</span><span class="n">args</span><span class="p" data-group-id="6282092152-3">)</span><span class="p">,</span><span class="w"> </span><span class="ss">do</span><span class="p">:</span><span class="w"> </span><span class="nc">Supervisor</span><span class="o">.</span><span class="n">start_link</span><span class="p" data-group-id="6282092152-4">(</span><span class="bp">__MODULE__</span><span class="p">,</span><span class="w"> </span><span class="n">args</span><span class="p">,</span><span class="w"> </span><span class="ss">name</span><span class="p">:</span><span class="w"> </span><span class="bp">__MODULE__</span><span class="p" data-group-id="6282092152-4">)</span><span class="w">
 
-  </span><span class="kd">def</span><span class="w"> </span><span class="nf">init</span><span class="p" data-group-id="2781605197-5">(</span><span class="c">_args</span><span class="p" data-group-id="2781605197-5">)</span><span class="w"> </span><span class="k" data-group-id="2781605197-6">do</span><span class="w">
-    </span><span class="n">children</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p" data-group-id="2781605197-7">[</span><span class="w">
-      </span><span class="p" data-group-id="2781605197-8">{</span><span class="nc">ExLink</span><span class="p">,</span><span class="w">
-      </span><span class="p" data-group-id="2781605197-9">{</span><span class="p" data-group-id="2781605197-10">%{</span><span class="w">
+  </span><span class="kd">def</span><span class="w"> </span><span class="nf">init</span><span class="p" data-group-id="6282092152-5">(</span><span class="c">_args</span><span class="p" data-group-id="6282092152-5">)</span><span class="w"> </span><span class="k" data-group-id="6282092152-6">do</span><span class="w">
+    </span><span class="n">children</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p" data-group-id="6282092152-7">[</span><span class="w">
+      </span><span class="p" data-group-id="6282092152-8">{</span><span class="nc">ExLink</span><span class="p">,</span><span class="w">
+      </span><span class="p" data-group-id="6282092152-9">{</span><span class="p" data-group-id="6282092152-10">%{</span><span class="w">
           </span><span class="ss">url</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;ws://localhost:8080&quot;</span><span class="p">,</span><span class="w">
           </span><span class="ss">authorization</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;123&quot;</span><span class="p">,</span><span class="w">
           </span><span class="ss">shard_count</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
           </span><span class="ss">user_id</span><span class="p">:</span><span class="w"> </span><span class="mi">123_456_789_123_456_789</span><span class="p">,</span><span class="w">
           </span><span class="ss">player</span><span class="p">:</span><span class="w"> </span><span class="nc">MyApp.Player</span><span class="w">
-        </span><span class="p" data-group-id="2781605197-10">}</span><span class="p">,</span><span class="w"> </span><span class="ss">name</span><span class="p">:</span><span class="w"> </span><span class="nc">MyApp.Player</span><span class="p" data-group-id="2781605197-9">}</span><span class="p" data-group-id="2781605197-8">}</span><span class="w">
-    </span><span class="p" data-group-id="2781605197-7">]</span><span class="w">
+        </span><span class="p" data-group-id="6282092152-10">}</span><span class="p">,</span><span class="w"> </span><span class="ss">name</span><span class="p">:</span><span class="w"> </span><span class="nc">MyApp.Player</span><span class="p" data-group-id="6282092152-9">}</span><span class="p" data-group-id="6282092152-8">}</span><span class="w">
+    </span><span class="p" data-group-id="6282092152-7">]</span><span class="w">
 
-    </span><span class="nc">Supervisor</span><span class="o">.</span><span class="n">init</span><span class="p" data-group-id="2781605197-11">(</span><span class="n">children</span><span class="p">,</span><span class="w"> </span><span class="ss">strategy</span><span class="p">:</span><span class="w"> </span><span class="ss">:one_for_one</span><span class="p" data-group-id="2781605197-11">)</span><span class="w">
-  </span><span class="k" data-group-id="2781605197-6">end</span><span class="w">
-</span><span class="k" data-group-id="2781605197-2">end</span><span class="w">
+    </span><span class="nc">Supervisor</span><span class="o">.</span><span class="n">init</span><span class="p" data-group-id="6282092152-11">(</span><span class="n">children</span><span class="p">,</span><span class="w"> </span><span class="ss">strategy</span><span class="p">:</span><span class="w"> </span><span class="ss">:one_for_one</span><span class="p" data-group-id="6282092152-11">)</span><span class="w">
+  </span><span class="k" data-group-id="6282092152-6">end</span><span class="w">
+</span><span class="k" data-group-id="6282092152-2">end</span><span class="w">
 
 </span><span class="c1"># after starting the supervisor, play something</span><span class="w">
-</span><span class="n">message</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">ExLink.Message</span><span class="o">.</span><span class="n">play</span><span class="p" data-group-id="2781605197-12">(</span><span class="n">track</span><span class="p">,</span><span class="w"> </span><span class="n">guild_id</span><span class="p" data-group-id="2781605197-12">)</span><span class="w">
-</span><span class="nc">ExLink.Connection</span><span class="o">.</span><span class="n">send</span><span class="p" data-group-id="2781605197-13">(</span><span class="nc">MyApp.Player</span><span class="p">,</span><span class="w"> </span><span class="n">message</span><span class="p" data-group-id="2781605197-13">)</span></code></pre>
+</span><span class="n">message</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">ExLink.Message</span><span class="o">.</span><span class="n">play</span><span class="p" data-group-id="6282092152-12">(</span><span class="n">track</span><span class="p">,</span><span class="w"> </span><span class="n">guild_id</span><span class="p" data-group-id="6282092152-12">)</span><span class="w">
+</span><span class="nc">ExLink.Connection</span><span class="o">.</span><span class="n">send</span><span class="p" data-group-id="6282092152-13">(</span><span class="nc">MyApp.Player</span><span class="p">,</span><span class="w"> </span><span class="n">message</span><span class="p" data-group-id="6282092152-13">)</span></code></pre>
 <p>Alternatively <a href="ExLink.Player.html"><code class="inline">ExLink.Player</code></a> provides a <code class="inline">__using__</code> macro to directly start the module under a supervisor.</p>
         </section>
 
@@ -126,8 +135,7 @@ ExLink
   <div class="summary-signature">
     <a href="#t:options/0">options()</a>
   </div>
-    <div class="summary-synopsis"><p>Options for <a href="#start_link/1"><code class="inline">start_link/1</code></a></p>
-</div>
+    <div class="summary-synopsis"><p>  Options for <a href="#start_link/1"><code class="inline">start_link/1</code></a></p></div>
 </div>
   </div>
   <div class="summary-functions summary">
@@ -138,36 +146,31 @@ ExLink
   <div class="summary-signature">
     <a href="#child_spec/1">child_spec(arg)</a>
   </div>
-    <div class="summary-synopsis"><p>Returns a specification to start this module under a supervisor</p>
-</div>
+    <div class="summary-synopsis"><p>Returns a specification to start this module under a supervisor.</p></div>
 </div>
 <div class="summary-row">
   <div class="summary-signature">
     <a href="#ensure_player/2">ensure_player(client, guild_id)</a>
   </div>
-    <div class="summary-synopsis"><p>Gets a player&#39;s pid, starting it if necessary</p>
-</div>
+    <div class="summary-synopsis"><p>  Gets a player&#39;s pid, starting it if necessary.</p></div>
 </div>
 <div class="summary-row">
   <div class="summary-signature">
     <a href="#get_player/2">get_player(client, guild_id)</a>
   </div>
-    <div class="summary-synopsis"><p>Gets a player&#39;s pid or :error if not started</p>
-</div>
+    <div class="summary-synopsis"><p>  Gets a player&#39;s pid or :error if not started.</p></div>
 </div>
 <div class="summary-row">
   <div class="summary-signature">
     <a href="#get_players/1">get_players(client)</a>
   </div>
-    <div class="summary-synopsis"><p>Gets all player&#39;s pids mapped by guild ids</p>
-</div>
+    <div class="summary-synopsis"><p>  Gets all player&#39;s pids mapped by guild ids.</p></div>
 </div>
 <div class="summary-row">
   <div class="summary-signature">
     <a href="#start_link/1">start_link(opts)</a>
   </div>
-    <div class="summary-synopsis"><p>Starts an <a href="ExLink.html#content"><code class="inline">ExLink</code></a> process linked to the current process</p>
-</div>
+    <div class="summary-synopsis"><p>  Starts an <a href="#content"><code class="inline">ExLink</code></a> process linked to the current process.</p></div>
 </div>
   </div>
         </section>
@@ -181,12 +184,12 @@ ExLink
 Types          </h1>
           <div class="types-list">
 <section class="detail" id="t:options/0">
-    <div class="detail-header">
+  <div class="detail-header">
     <a href="#t:options/0" class="detail-link" title="Link to this type">
       <span class="icon-link" aria-hidden="true"></span>
       <span class="sr-only">Link to this type</span>
     </a>
-    <h1 class="signature">options()</span>
+    <h1 class="signature">options()</h1>
       <a href="https://github.com/SpaceEEC/ex_link/blob/master/lib/ex_link.ex#L60" class="view-source" rel="help" title="View Source">
        <span class="icon-code" aria-hidden="true"></span>
        <span class="sr-only">View Source</span>
@@ -235,12 +238,12 @@ Types          </h1>
 Functions          </h1>
           <div class="functions-list">
 <section class="detail" id="child_spec/1">
-    <div class="detail-header">
+  <div class="detail-header">
     <a href="#child_spec/1" class="detail-link" title="Link to this function">
       <span class="icon-link" aria-hidden="true"></span>
       <span class="sr-only">Link to this function</span>
     </a>
-    <h1 class="signature">child_spec(arg)</span>
+    <h1 class="signature">child_spec(arg)</h1>
       <a href="https://github.com/SpaceEEC/ex_link/blob/master/lib/ex_link.ex#L46" class="view-source" rel="help" title="View Source">
        <span class="icon-code" aria-hidden="true"></span>
        <span class="sr-only">View Source</span>
@@ -252,12 +255,12 @@ Functions          </h1>
   </section>
 </section>
 <section class="detail" id="ensure_player/2">
-    <div class="detail-header">
+  <div class="detail-header">
     <a href="#ensure_player/2" class="detail-link" title="Link to this function">
       <span class="icon-link" aria-hidden="true"></span>
       <span class="sr-only">Link to this function</span>
     </a>
-    <h1 class="signature">ensure_player(client, guild_id)</span>
+    <h1 class="signature">ensure_player(client, guild_id)</h1>
       <a href="https://github.com/SpaceEEC/ex_link/blob/master/lib/ex_link.ex#L121" class="view-source" rel="help" title="View Source">
        <span class="icon-code" aria-hidden="true"></span>
        <span class="sr-only">View Source</span>
@@ -274,12 +277,12 @@ Functions          </h1>
   </section>
 </section>
 <section class="detail" id="get_player/2">
-    <div class="detail-header">
+  <div class="detail-header">
     <a href="#get_player/2" class="detail-link" title="Link to this function">
       <span class="icon-link" aria-hidden="true"></span>
       <span class="sr-only">Link to this function</span>
     </a>
-    <h1 class="signature">get_player(client, guild_id)</span>
+    <h1 class="signature">get_player(client, guild_id)</h1>
       <a href="https://github.com/SpaceEEC/ex_link/blob/master/lib/ex_link.ex#L99" class="view-source" rel="help" title="View Source">
        <span class="icon-code" aria-hidden="true"></span>
        <span class="sr-only">View Source</span>
@@ -296,12 +299,12 @@ Functions          </h1>
   </section>
 </section>
 <section class="detail" id="get_players/1">
-    <div class="detail-header">
+  <div class="detail-header">
     <a href="#get_players/1" class="detail-link" title="Link to this function">
       <span class="icon-link" aria-hidden="true"></span>
       <span class="sr-only">Link to this function</span>
     </a>
-    <h1 class="signature">get_players(client)</span>
+    <h1 class="signature">get_players(client)</h1>
       <a href="https://github.com/SpaceEEC/ex_link/blob/master/lib/ex_link.ex#L110" class="view-source" rel="help" title="View Source">
        <span class="icon-code" aria-hidden="true"></span>
        <span class="sr-only">View Source</span>
@@ -318,12 +321,12 @@ Functions          </h1>
   </section>
 </section>
 <section class="detail" id="start_link/1">
-    <div class="detail-header">
+  <div class="detail-header">
     <a href="#start_link/1" class="detail-link" title="Link to this function">
       <span class="icon-link" aria-hidden="true"></span>
       <span class="sr-only">Link to this function</span>
     </a>
-    <h1 class="signature">start_link(opts)</span>
+    <h1 class="signature">start_link(opts)</h1>
       <a href="https://github.com/SpaceEEC/ex_link/blob/master/lib/ex_link.ex#L79" class="view-source" rel="help" title="View Source">
        <span class="icon-code" aria-hidden="true"></span>
        <span class="sr-only">View Source</span>
@@ -337,7 +340,7 @@ Functions          </h1>
       </div>
   </div>
   <section class="docstring">
-<p>  Starts an <a href="ExLink.html#content"><code class="inline">ExLink</code></a> process linked to the current process.</p>
+<p>  Starts an <a href="#content"><code class="inline">ExLink</code></a> process linked to the current process.</p>
   </section>
 </section>
           </div>
@@ -346,19 +349,33 @@ Functions          </h1>
         <p>
           <span class="line">
             Built using
-            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener">ExDoc</a> (v0.19.2),
+            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener">ExDoc</a> (v0.21.1),
           </span>
           <span class="line">
             designed by
             <a href="https://twitter.com/dignifiedquire" target="_blank" rel="noopener" title="@dignifiedquire">Friedel Ziegelmayer</a>.
-            </span>
+          </span>
+        </p>
+        <p>
+          <button class="line footer-button night-mode-toggle">
+            Toggle night mode
+          </button>
+          <button class="line footer-button tooltips-toggle">
+            <span class="tooltips-option-disable">Disable tooltips</span>
+            <span class="tooltips-option-enable">Enable tooltips</span>
+          </button>
+          <button class="line footer-button display-shortcuts-help">
+            Display keyboard shortcuts
+          </button>
+          <button class="line footer-button display-quick-switch">
+            Go to a HexDocs package
+          </button>
         </p>
       </footer>
     </div>
   </div>
 </section>
 </div>
-  <script src="dist/html-c1666276880c0f8e3769.js"></script>
   
   </body>
 </html>
