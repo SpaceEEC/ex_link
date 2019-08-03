@@ -70,53 +70,53 @@ ExLink.Player <small>behaviour</small>
 <p>  Player behaviour used to keep track of running players and manage them.</p>
 <p>  Provides a <code class="inline">__using__</code> macro to start the current module as a <a href="ExLink.Player.html#content"><code class="inline">ExLink.Player</code></a> directly under a supervisor.</p>
 <pre><code class="nohighlight makeup elixir"><span class="c1"># This time `use ExLink.Player` instead</span><span class="w">
-</span><span class="kd">defmodule</span><span class="w"> </span><span class="nc">MyApp.Player</span><span class="w"> </span><span class="k" data-group-id="5678777772-1">do</span><span class="w">
+</span><span class="kd">defmodule</span><span class="w"> </span><span class="nc">MyApp.Player</span><span class="w"> </span><span class="k" data-group-id="8878915069-1">do</span><span class="w">
   </span><span class="kn">use</span><span class="w"> </span><span class="nc">ExLink.Player</span><span class="w">
 
-  </span><span class="kd">def</span><span class="w"> </span><span class="nf">init</span><span class="p" data-group-id="5678777772-2">(</span><span class="n">client</span><span class="p">,</span><span class="w"> </span><span class="n">guild_id</span><span class="p" data-group-id="5678777772-2">)</span><span class="w"> </span><span class="k" data-group-id="5678777772-3">do</span><span class="w">
-    </span><span class="p" data-group-id="5678777772-4">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="5678777772-5">{</span><span class="n">client</span><span class="p">,</span><span class="w"> </span><span class="n">guild_id</span><span class="p" data-group-id="5678777772-5">}</span><span class="p" data-group-id="5678777772-4">}</span><span class="w">
-  </span><span class="k" data-group-id="5678777772-3">end</span><span class="w">
+  </span><span class="kd">def</span><span class="w"> </span><span class="nf">init</span><span class="p" data-group-id="8878915069-2">(</span><span class="n">client</span><span class="p">,</span><span class="w"> </span><span class="n">guild_id</span><span class="p" data-group-id="8878915069-2">)</span><span class="w"> </span><span class="k" data-group-id="8878915069-3">do</span><span class="w">
+    </span><span class="p" data-group-id="8878915069-4">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="8878915069-5">{</span><span class="n">client</span><span class="p">,</span><span class="w"> </span><span class="n">guild_id</span><span class="p" data-group-id="8878915069-5">}</span><span class="p" data-group-id="8878915069-4">}</span><span class="w">
+  </span><span class="k" data-group-id="8878915069-3">end</span><span class="w">
 
   </span><span class="c1"># dispatches not related to a player (for example stats)</span><span class="w">
   </span><span class="c1"># return value doesn&#39;t matter</span><span class="w">
-  </span><span class="kd">def</span><span class="w"> </span><span class="nf">handle_dispatch</span><span class="p" data-group-id="5678777772-6">(</span><span class="n">data</span><span class="p">,</span><span class="w"> </span><span class="no">nil</span><span class="p" data-group-id="5678777772-6">)</span><span class="w"> </span><span class="k" data-group-id="5678777772-7">do</span><span class="w">
-    </span><span class="nc">IO</span><span class="o">.</span><span class="n">puts</span><span class="p" data-group-id="5678777772-8">(</span><span class="s">&quot;Players: </span><span class="si" data-group-id="5678777772-9">#{</span><span class="n">data</span><span class="p" data-group-id="5678777772-10">[</span><span class="s">&quot;players&quot;</span><span class="p" data-group-id="5678777772-10">]</span><span class="si" data-group-id="5678777772-9">}</span><span class="s">&quot;</span><span class="p" data-group-id="5678777772-8">)</span><span class="w">
+  </span><span class="kd">def</span><span class="w"> </span><span class="nf">handle_dispatch</span><span class="p" data-group-id="8878915069-6">(</span><span class="n">data</span><span class="p">,</span><span class="w"> </span><span class="no">nil</span><span class="p" data-group-id="8878915069-6">)</span><span class="w"> </span><span class="k" data-group-id="8878915069-7">do</span><span class="w">
+    </span><span class="nc">IO</span><span class="o">.</span><span class="n">puts</span><span class="p" data-group-id="8878915069-8">(</span><span class="s">&quot;Players: </span><span class="si" data-group-id="8878915069-9">#{</span><span class="n">data</span><span class="p" data-group-id="8878915069-10">[</span><span class="s">&quot;players&quot;</span><span class="p" data-group-id="8878915069-10">]</span><span class="si" data-group-id="8878915069-9">}</span><span class="s">&quot;</span><span class="p" data-group-id="8878915069-8">)</span><span class="w">
     </span><span class="no">nil</span><span class="w">
-  </span><span class="k" data-group-id="5678777772-7">end</span><span class="w">
+  </span><span class="k" data-group-id="8878915069-7">end</span><span class="w">
 
-  </span><span class="kd">def</span><span class="w"> </span><span class="nf">handle_dispatch</span><span class="p" data-group-id="5678777772-11">(</span><span class="n">data</span><span class="p">,</span><span class="w"> </span><span class="n">state</span><span class="p" data-group-id="5678777772-11">)</span><span class="w"> </span><span class="k" data-group-id="5678777772-12">do</span><span class="w">
-    </span><span class="nc">IO</span><span class="o">.</span><span class="n">puts</span><span class="p" data-group-id="5678777772-13">(</span><span class="s">&quot;Received a </span><span class="si" data-group-id="5678777772-14">#{</span><span class="n">data</span><span class="p" data-group-id="5678777772-15">[</span><span class="s">&quot;type&quot;</span><span class="p" data-group-id="5678777772-15">]</span><span class="si" data-group-id="5678777772-14">}</span><span class="s"> event&quot;</span><span class="p" data-group-id="5678777772-13">)</span><span class="w">
-    </span><span class="p" data-group-id="5678777772-16">{</span><span class="ss">:noreply</span><span class="p">,</span><span class="w"> </span><span class="n">state</span><span class="p" data-group-id="5678777772-16">}</span><span class="w">
-  </span><span class="k" data-group-id="5678777772-12">end</span><span class="w">
-</span><span class="k" data-group-id="5678777772-1">end</span><span class="w">
+  </span><span class="kd">def</span><span class="w"> </span><span class="nf">handle_dispatch</span><span class="p" data-group-id="8878915069-11">(</span><span class="n">data</span><span class="p">,</span><span class="w"> </span><span class="n">state</span><span class="p" data-group-id="8878915069-11">)</span><span class="w"> </span><span class="k" data-group-id="8878915069-12">do</span><span class="w">
+    </span><span class="nc">IO</span><span class="o">.</span><span class="n">puts</span><span class="p" data-group-id="8878915069-13">(</span><span class="s">&quot;Received a </span><span class="si" data-group-id="8878915069-14">#{</span><span class="n">data</span><span class="p" data-group-id="8878915069-15">[</span><span class="s">&quot;type&quot;</span><span class="p" data-group-id="8878915069-15">]</span><span class="si" data-group-id="8878915069-14">}</span><span class="s"> event&quot;</span><span class="p" data-group-id="8878915069-13">)</span><span class="w">
+    </span><span class="p" data-group-id="8878915069-16">{</span><span class="ss">:noreply</span><span class="p">,</span><span class="w"> </span><span class="n">state</span><span class="p" data-group-id="8878915069-16">}</span><span class="w">
+  </span><span class="k" data-group-id="8878915069-12">end</span><span class="w">
+</span><span class="k" data-group-id="8878915069-1">end</span><span class="w">
 
 </span><span class="c1"># Now fits into a supervision tree directly</span><span class="w">
-</span><span class="kd">defmodule</span><span class="w"> </span><span class="nc">MyApp.Supervisor</span><span class="w"> </span><span class="k" data-group-id="5678777772-17">do</span><span class="w">
+</span><span class="kd">defmodule</span><span class="w"> </span><span class="nc">MyApp.Supervisor</span><span class="w"> </span><span class="k" data-group-id="8878915069-17">do</span><span class="w">
   </span><span class="kn">use</span><span class="w"> </span><span class="nc">Supervisor</span><span class="w">
 
-  </span><span class="kd">def</span><span class="w"> </span><span class="nf">start_link</span><span class="p" data-group-id="5678777772-18">(</span><span class="n">args</span><span class="p" data-group-id="5678777772-18">)</span><span class="w"> </span><span class="k" data-group-id="5678777772-19">do</span><span class="w">
-    </span><span class="nc">Supervisor</span><span class="o">.</span><span class="n">start_link</span><span class="p" data-group-id="5678777772-20">(</span><span class="bp">__MODULE__</span><span class="p">,</span><span class="w"> </span><span class="n">args</span><span class="p">,</span><span class="w"> </span><span class="ss">name</span><span class="p">:</span><span class="w"> </span><span class="bp">__MODULE__</span><span class="p" data-group-id="5678777772-20">)</span><span class="w">
-  </span><span class="k" data-group-id="5678777772-19">end</span><span class="w">
+  </span><span class="kd">def</span><span class="w"> </span><span class="nf">start_link</span><span class="p" data-group-id="8878915069-18">(</span><span class="n">args</span><span class="p" data-group-id="8878915069-18">)</span><span class="w"> </span><span class="k" data-group-id="8878915069-19">do</span><span class="w">
+    </span><span class="nc">Supervisor</span><span class="o">.</span><span class="n">start_link</span><span class="p" data-group-id="8878915069-20">(</span><span class="bp">__MODULE__</span><span class="p">,</span><span class="w"> </span><span class="n">args</span><span class="p">,</span><span class="w"> </span><span class="ss">name</span><span class="p">:</span><span class="w"> </span><span class="bp">__MODULE__</span><span class="p" data-group-id="8878915069-20">)</span><span class="w">
+  </span><span class="k" data-group-id="8878915069-19">end</span><span class="w">
 
-  </span><span class="kd">def</span><span class="w"> </span><span class="nf">init</span><span class="p" data-group-id="5678777772-21">(</span><span class="c">_args</span><span class="p" data-group-id="5678777772-21">)</span><span class="w"> </span><span class="k" data-group-id="5678777772-22">do</span><span class="w">
-    </span><span class="n">children</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p" data-group-id="5678777772-23">[</span><span class="w">
-      </span><span class="p" data-group-id="5678777772-24">{</span><span class="nc">MyApp.Player</span><span class="p">,</span><span class="w">
-      </span><span class="p" data-group-id="5678777772-25">{</span><span class="p" data-group-id="5678777772-26">%{</span><span class="w">
-          </span><span class="ss">url</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;localhost:8080&quot;</span><span class="p">,</span><span class="w">
+  </span><span class="kd">def</span><span class="w"> </span><span class="nf">init</span><span class="p" data-group-id="8878915069-21">(</span><span class="c">_args</span><span class="p" data-group-id="8878915069-21">)</span><span class="w"> </span><span class="k" data-group-id="8878915069-22">do</span><span class="w">
+    </span><span class="n">children</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p" data-group-id="8878915069-23">[</span><span class="w">
+      </span><span class="p" data-group-id="8878915069-24">{</span><span class="nc">MyApp.Player</span><span class="p">,</span><span class="w">
+      </span><span class="p" data-group-id="8878915069-25">{</span><span class="p" data-group-id="8878915069-26">%{</span><span class="w">
+          </span><span class="ss">url</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;ws://localhost:8080&quot;</span><span class="p">,</span><span class="w">
           </span><span class="ss">authorization</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;123&quot;</span><span class="p">,</span><span class="w">
           </span><span class="ss">shard_count</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
           </span><span class="ss">user_id</span><span class="p">:</span><span class="w"> </span><span class="mi">123_456_789_123_456_789</span><span class="p">,</span><span class="w">
           </span><span class="c1"># player: Not needed here</span><span class="w">
-        </span><span class="p" data-group-id="5678777772-26">}</span><span class="p">,</span><span class="w"> </span><span class="ss">name</span><span class="p">:</span><span class="w"> </span><span class="nc">MyApp.Player</span><span class="p" data-group-id="5678777772-25">}</span><span class="p" data-group-id="5678777772-24">}</span><span class="w">
-    </span><span class="p" data-group-id="5678777772-23">]</span><span class="w">
+        </span><span class="p" data-group-id="8878915069-26">}</span><span class="p">,</span><span class="w"> </span><span class="ss">name</span><span class="p">:</span><span class="w"> </span><span class="nc">MyApp.Player</span><span class="p" data-group-id="8878915069-25">}</span><span class="p" data-group-id="8878915069-24">}</span><span class="w">
+    </span><span class="p" data-group-id="8878915069-23">]</span><span class="w">
 
-    </span><span class="nc">Supervisor</span><span class="o">.</span><span class="n">init</span><span class="p" data-group-id="5678777772-27">(</span><span class="n">children</span><span class="p">,</span><span class="w"> </span><span class="ss">strategy</span><span class="p">:</span><span class="w"> </span><span class="ss">:one_for_one</span><span class="p" data-group-id="5678777772-27">)</span><span class="p">)</span><span class="w">
-  </span><span class="k" data-group-id="5678777772-22">end</span><span class="w">
-</span><span class="k" data-group-id="5678777772-17">end</span><span class="w">
+    </span><span class="nc">Supervisor</span><span class="o">.</span><span class="n">init</span><span class="p" data-group-id="8878915069-27">(</span><span class="n">children</span><span class="p">,</span><span class="w"> </span><span class="ss">strategy</span><span class="p">:</span><span class="w"> </span><span class="ss">:one_for_one</span><span class="p" data-group-id="8878915069-27">)</span><span class="p">)</span><span class="w">
+  </span><span class="k" data-group-id="8878915069-22">end</span><span class="w">
+</span><span class="k" data-group-id="8878915069-17">end</span><span class="w">
 
 </span><span class="c1"># after starting the supervisor, play something</span><span class="w">
-</span><span class="n">message</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">ExLink.Message</span><span class="o">.</span><span class="n">play</span><span class="p" data-group-id="5678777772-28">(</span><span class="n">track</span><span class="p">,</span><span class="w"> </span><span class="n">guild_id</span><span class="p" data-group-id="5678777772-28">)</span><span class="w">
-</span><span class="nc">ExLink.Connection</span><span class="o">.</span><span class="n">send</span><span class="p" data-group-id="5678777772-29">(</span><span class="nc">MyApp.Player</span><span class="p">,</span><span class="w"> </span><span class="n">message</span><span class="p" data-group-id="5678777772-29">)</span></code></pre>
+</span><span class="n">message</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">ExLink.Message</span><span class="o">.</span><span class="n">play</span><span class="p" data-group-id="8878915069-28">(</span><span class="n">track</span><span class="p">,</span><span class="w"> </span><span class="n">guild_id</span><span class="p" data-group-id="8878915069-28">)</span><span class="w">
+</span><span class="nc">ExLink.Connection</span><span class="o">.</span><span class="n">send</span><span class="p" data-group-id="8878915069-29">(</span><span class="nc">MyApp.Player</span><span class="p">,</span><span class="w"> </span><span class="n">message</span><span class="p" data-group-id="8878915069-29">)</span></code></pre>
         </section>
 
         <section id="summary" class="details-list">
@@ -353,7 +353,7 @@ Callbacks          </h1>
       <span class="note">(since 0.1.0)</span>
     
       <div class="specs">
-          <pre>handle_cast(request :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(), state :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()) :: term() :: <a href="#t:common_return/0">common_return</a>()</pre>
+          <pre>handle_cast(request :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(), state :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()) :: <a href="#t:common_return/0">common_return</a>()</pre>
       </div>
   </div>
   <section class="docstring">
