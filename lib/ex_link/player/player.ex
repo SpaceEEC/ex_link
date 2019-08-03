@@ -184,7 +184,7 @@ defmodule ExLink.Player do
         {:ok, state}
 
       {:stop, _reason} = stop ->
-        ExLink.Connection.send(client, ExLink.Message.stop(guild_id))
+        ExLink.Connection.send(client, ExLink.Message.destroy(guild_id))
 
         stop
     end
@@ -214,12 +214,12 @@ defmodule ExLink.Player do
         {:noreply, %{state | module_state: new_state}}
 
       {:stop, reason, reply, new_state} ->
-        ExLink.Connection.send(state.client, ExLink.Message.stop(state.guild_id))
+        ExLink.Connection.send(state.client, ExLink.Message.destroy(state.guild_id))
 
         {:stop, reason, reply, %{state | module_state: new_state}}
 
       {:stop, reason, new_state} ->
-        ExLink.Connection.send(state.client, ExLink.Message.stop(state.guild_id))
+        ExLink.Connection.send(state.client, ExLink.Message.destroy(state.guild_id))
 
         {:stop, reason, %{state | module_state: new_state}}
     end
@@ -249,7 +249,7 @@ defmodule ExLink.Player do
         {:noreply, %{state | module_state: new_state}}
 
       {:stop, reason, new_state} ->
-        ExLink.Connection.send(state.client, ExLink.Message.stop(state.guild_id))
+        ExLink.Connection.send(state.client, ExLink.Message.destroy(state.guild_id))
 
         {:stop, reason, %{state | module_state: new_state}}
     end
