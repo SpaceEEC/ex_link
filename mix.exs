@@ -40,7 +40,7 @@ defmodule ExLink.MixProject do
     [
       {:websockex, "~> 0.4.2"},
       {:poison, ">= 0.0.0"},
-      {:ex_doc, "~> 0.19", only: :dev, runtime: false}
+      {:ex_doc, "~> 0.21.1", only: :dev, runtime: false}
     ]
   end
 end
