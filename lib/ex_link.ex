@@ -114,7 +114,7 @@ defmodule ExLink do
   end
 
   @doc """
-    Gets or starts a player's process (id).
+    Gets a player's pid, starting it if necessary.
   """
   @doc since: "0.1.0"
   @spec ensure_player(client :: term(), guild :: ExLink.Message.id()) :: pid()
