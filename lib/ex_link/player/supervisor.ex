@@ -23,7 +23,7 @@ defmodule ExLink.Player.Supervisor do
       :error ->
         unless event["type"] == "WebSocketClosedEvent" do
           start_child(client, guild_id)
-          # dispatch(client, event)
+          dispatch(client, event)
         end
 
       pid when is_pid(pid) ->
