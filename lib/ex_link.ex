@@ -121,8 +121,19 @@ defmodule ExLink do
   def ensure_player(client, guild_id) do
     with :error <- get_player(client, guild_id) do
       ExLink.Player.Supervisor.start_child(client, guild_id)
+      |> case do
+        {:ok, child} ->
+          child
 
-      ensure_player(client, guild_id)
+        {:ok, child, _info} ->
+          child
+
+        {:error, {:already_started, child}} ->
+          child
+
+        {:error, error} ->
+          raise "Starting the player failed: #{inspect(error)}"
+      end
     end
   end
 

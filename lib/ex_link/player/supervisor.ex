@@ -67,7 +67,7 @@ defmodule ExLink.Player.Supervisor do
   @spec start_child(
           client :: term(),
           guild_id :: ExLink.Message.id()
-        ) :: Supervisor.on_start()
+        ) :: Supervisor.on_start_child()
   def start_child(client, guild_id) do
     guild_id = to_integer(guild_id)
     module = ExLink.get_module(client)
